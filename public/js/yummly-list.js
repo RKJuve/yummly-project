@@ -13,9 +13,10 @@ var YL = {
 		},
 // issues GET requests to the yummly search API with a query string
  yumGet: function(query) {
+
 			$.ajax({
 				type: 'GET',
-				url: url,
+				url: YL.url,
 				data: {q:query},
 				dataType: 'jsonp',
 				jsonpCallback: 'YL.CBF',

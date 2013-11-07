@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          {expand: true, cwd: "bower_components/jquery/", src: ["jquery.min.js"], dest: "public/js/"}
+          {expand: true, cwd: "bower_components/jquery/", src: ["jquery.min.js","jquery.min.map"], dest: "public/js/"}
         ]
       }
     },
