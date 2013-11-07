@@ -24,7 +24,7 @@
     "grunt-contrib-watch": "~0.5.3"
   },
   "scripts": {
-    "postinstall": "./node_modules/grunt-cli/bin/grunt",
+    "postinstall": "bower install && grunt",
     "start": "node app",
     "test": "grunt test"
   }
