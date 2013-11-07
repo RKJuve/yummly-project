@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ["app.js", "Gruntfile.js", "views/*", "public/**"],
+      files: ["app.js", "Gruntfile.js", "views/*", "public/**", "yummly-list.js"],
       tasks: ['jshint'],
       options: {
         livereload: true
