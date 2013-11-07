@@ -4,10 +4,15 @@ module.exports = function(grunt) {
       files: ["Gruntfile.js", "app.js", "public/*.js", "package.json"]
     },
     copy: {
-      main: {}
+      main: {
+        files: [
+          {expand: true, cwd: "bower_components/jquery/", src: ["jquery.min.js"], dest: "public/js/"}
+        ]
+      }
     },
     watch: {
-      files: ["views/*", "public/**"],
+      files: ["app.js", "Gruntfile.js", "views/*", "public/**"],
+      tasks: ['jshint'],
       options: {
         livereload: true
       }
