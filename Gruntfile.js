@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          {expand: true, flatten: true, cwd: "bower_components/", src: ["backbone/backbone.js", "jquery/jquery.min.js","jquery/jquery.min.map"], dest: "public/js/"},
+          {expand: true, flatten: true, cwd: "bower_components/", src: ["backbone/backbone.js", "jquery/jquery.min.js","jquery/jquery.min.map","underscore/underscore.js"], dest: "public/js/"},
           {src: ["yummly-list.js"], dest: "public/js/"}
         ]
       }
