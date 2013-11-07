@@ -1,9 +1,9 @@
 
-////
-// yummly-list namespace
+//// yummly-list namespace
 var YL = {
 
-// YL scoped variables
+//// YL scoped variables
+// yummly recipie search api url and keys	
 	url: 'http://api.yummly.com/v1/api/recipes?_app_id=a1690f7a&_app_key=ce9b21d8ad6d145ed0dce4da2e9754a4',
 
 //// set up functions
@@ -11,6 +11,7 @@ var YL = {
 	CBF: function(data) {
 			$('#output').html(JSON.stringify(data, null, '\t'));
 		},
+
 // issues GET requests to the yummly search API with a query string
  yumGet: function(query) {
 
