@@ -5,9 +5,6 @@ searches for and displays recipies from the yummly api.  Ingredients from user s
 
 1. clone repo
 2. run ```npm install```
-3. run ```bower install```
-4. run ```grunt```
 
-5. server starts with ```npm start``` and ```node app```
-
-6. grunt watch / livereload with ```grunt watch```
+3. server starts with ```npm start``` and ```node app```
+4. grunt watch / livereload with ```grunt watch```
