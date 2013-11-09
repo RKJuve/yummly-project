@@ -1,0 +1,1 @@
+APP.SearchResult = Backbone.Model.extend();

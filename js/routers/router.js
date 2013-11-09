@@ -1,14 +1,23 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
-		"firstRoute":"firstRoute"
+		"firstRoute":"firstRoute",
+		"second":"secondRoute",
+		"yumRoute":"yumRoute",
 	},
-
-	firstRoute: function() {
-		console.log("first route hit");
+	default: function() {
+		console.log("router default");
+	},
+	secondRoute: function() {
+		console.log("second route hit");
+	},
+	yumRoute: function() {
+		console.log("yumRoute hit");
+		APP.searchResults = new APP.SearchResults();
+		APP.searchResults.fetch();
 	}
 
 });
 
-APP.routers = new APP.Router();
-Backbone.history.start({root: "/"});
+APP.router = new APP.Router();
+Backbone.history.start({pushState: true});

@@ -17,9 +17,6 @@ var app = express()
 app.get("/", function(req, res) {
   res.render("index2");
 });
-app.get("/test", function(req, res) {
-  res.render("index");
-});
 
 // start node server
 var port = process.env.PORT || 3000;
