@@ -13,7 +13,19 @@
 	<script	src="routers/router.js"></script>
 </head>
 <body>
-index2
-<div id="bin" style="border: 2px solid; height: 600px; width: 600px">stuff</div>
+<form id="form">
+<input id="query" type="text"></input>
+</form>
+<div id="bin" style="border: 2px solid; height: 600px; width: 600px">Type search string in box above and hit enter to search yummly recipie api</div>
+
+<!-- script to keep form submit from refreshing page -->
+<script type="text/javascript">
+	$('#form').submit(function(){
+		APP.router.yumRoute();
+		return false;
+	});
+</script>
+
+
 </body>
 </html>
