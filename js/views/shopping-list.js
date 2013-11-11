@@ -1,0 +1,1 @@
+var ShoppingList = Backbone.View.extend({});

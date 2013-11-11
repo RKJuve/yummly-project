@@ -4,7 +4,11 @@ APP.Router = Backbone.Router.extend({
 		"firstRoute":"firstRoute",
 		"second":"secondRoute",
 		"yumRoute":"yumRoute",
+		"inventory": "inventory",
+		"shoppingList": "shoppingList",
+		"week": "weeklySchedule"
 	},
+
 	default: function() {
 		console.log("router default");
 	},
@@ -21,9 +25,21 @@ APP.Router = Backbone.Router.extend({
 				APP.searchResultsView.render();
 			}
 		});
+	},
+	inventory: function() {
+		console.log("You have reached the inventory list");
+		APP.inventory = new APP.Inventory();
+	},
+	shoppingList: function() {
+		console.log("You have reached the shopping list");
+		APP.shoppingList = new APP.ShoppingList();
+	},
+	week: function() {
+		console.log("You have reached the weekly schedule");
+		APP.weeklySchedule = new APP.WeeklySchedule();
 	}
 
 });
 
 APP.router = new APP.Router();
-Backbone.history.start({pushState: true});
+Backbone.history.start({root: "/", pushState: true});
