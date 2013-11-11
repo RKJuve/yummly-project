@@ -1,17 +1,8 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
-		"firstRoute":"firstRoute",
-		"second":"secondRoute",
 		"yumRoute":"yumRoute",
 	},
-	default: function() {
-		console.log("router default");
-	},
-	secondRoute: function() {
-		console.log("second route hit");
-	},
-	
 	yumRoute: function() {
 		$('#bin').empty();
 		var query = $('#query').val()

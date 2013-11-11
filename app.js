@@ -5,17 +5,18 @@ var path = require("path"),
     _ = require("underscore");
 
 //set up the express app
-
 var app = express()
             .set("views", path.join(__dirname, "views"))
             .set("view engine", "hbs")
-            .use(express.static(path.join(__dirname, "public")))
-            .use(express.static(path.join(__dirname, "js")))
+            .use(express.static(
+            	path.join(__dirname, "js"),
+            	path.join(__dirname, "css")
+            	))
             .use(express.bodyParser());
 
 // set index view
 app.get("/", function(req, res) {
-  res.render("index2");
+  res.render("index");
 });
 
 // start node server

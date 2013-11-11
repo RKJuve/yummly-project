@@ -18,8 +18,13 @@ APP.SearchResultView = Backbone.View.extend({
 	initialize: function(){
 		this.render();
 	},
+	events: {
+		"click a":"clicked"
+	},
+	clicked: function(){
+		console.log(this.model);
+	},
 	render: function() {
-		this.$el.html("<h3>"+this.model.get('id')+"</h3>");
-		//$(this.el).append(this.$el);
+		this.$el.html("<h3><a>"+this.model.get('id')+"</a></h3>");
 	},
 });
