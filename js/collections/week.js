@@ -1,4 +1,4 @@
-APP.Week = Backbone.Collection.extend({
+APP.WeeklySchedule = Backbone.Collection.extend({
 	model: APP.DayOfWeek,
 	week: "/week"
 });
