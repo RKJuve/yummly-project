@@ -11,18 +11,34 @@ module.exports = function(grunt) {
         ]
       }
     },
+    sass: {
+      compile: {
+        options: {
+          includePaths: require("node-neat").includePaths,
+          outputStyle: "compressed"
+        },
+        files: {
+          "public/css/base.css": "public/scss/base.scss"
+        }
+      }
+    },
     watch: {
       files: ["app.js", "Gruntfile.js", "views/*", "public/**", "yummly-list.js"],
       tasks: ['jshint'],
       options: {
         livereload: true
-      }
-    }
+      },
+      css: {
+        files: ["**/*.scss"],
+        tasks: ["sass"],
+      },
+    },
   });
 
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-sass");
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask("default", ["jshint", "copy"]);
+  grunt.registerTask("default", ["jshint", "copy", "sass"]);
 };
