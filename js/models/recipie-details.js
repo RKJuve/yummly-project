@@ -5,6 +5,6 @@ APP.RecipieDetails = Backbone.Model.extend({
 		if (!APP.plannedRecipies) {
 			APP.plannedRecipies = new APP.PlannedRecipies();
 		}
-		APP.plannedRecipies.add(APP.RecipieDetails);
+		APP.plannedRecipies.add(APP.recipieDetails);
 	}
 });

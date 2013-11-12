@@ -6,13 +6,13 @@ var path = require("path"),
 
 //set up the express app
 var app = express()
-						.set("views", path.join(__dirname, "views"))
-						.set("view engine", "hbs")
-						.use(express.static(
-							path.join(__dirname, "js"),
-							path.join(__dirname, "css")
-							))
-						.use(express.bodyParser());
+	.set("views", path.join(__dirname, "views"))
+	.set("view engine", "hbs")
+	.use(express.static(
+		path.join(__dirname, "js"),
+		path.join(__dirname, "css")
+		))
+	.use(express.bodyParser());
 
 // set index view
 app.get("/", function(req, res) {
