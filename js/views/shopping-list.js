@@ -1,1 +1,1 @@
-var ShoppingList = Backbone.View.extend({});
+APP.ShoppingList = Backbone.View.extend({});

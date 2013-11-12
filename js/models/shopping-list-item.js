@@ -1,4 +1,4 @@
-var ShoppingListItem = Backbone.Model.extend({
+APP.ShoppingListItem = Backbone.Model.extend({
 	defaults: {
 		inventoryItem: false,
 		recipeIngredient: false,

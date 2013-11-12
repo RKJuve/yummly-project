@@ -19,6 +19,7 @@ app.get("/", function(req, res) {
 	res.render("index");
 });
 
+
 // start node server
 var port = process.env.PORT || 3000;
 app.listen(port);
