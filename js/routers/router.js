@@ -1,13 +1,12 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
-		"yumRoute":"yumRoute",
+		"search":"search",
 		"inventory": "inventory",
 		"shoppingList": "shoppingList",
-		"week": "weeklySchedule"
+		"week": "weeklySchedule",
+		"search/:recipe_id":"details"
 	},
-<<<<<<< HEAD
-=======
 
 	default: function() {
 		console.log("router default");
@@ -15,8 +14,22 @@ APP.Router = Backbone.Router.extend({
 	secondRoute: function() {
 		console.log("second route hit");
 	},
->>>>>>> 55d262d74e4355356d363451871a54c54d99913d
-	yumRoute: function() {
+	details: function(recipie_id){
+		APP.recipieDetails = new APP.RecipieDetails({id: recipie_id});
+		APP.recipieDetails.fetch({
+			data: {
+				_app_id: "a1690f7a",
+				_app_key: "ce9b21d8ad6d145ed0dce4da2e9754a4",
+			},
+			dataType: "jsonp",
+			success: function(){
+				APP.recipieDetailsView = new APP.RecipieDetailsView({model: APP.recipieDetails});
+				APP.recipieDetailsView.render();
+			}
+		});
+
+	},
+	search: function() {
 		$('#bin').empty();
 		var query = $('#query').val()
 		APP.searchResults = new APP.SearchResults();
