@@ -8,8 +8,10 @@
 	<script	src="lib/handlebars-v1.1.2.js"></script>
 	<script	src="main.js"></script>
 	<script	src="models/search-result.js"></script>
+	<script	src="models/recipie-details.js"></script>
 	<script src="collections/search-results.js"></script>
 	<script src="views/search-result.js"></script>
+	<script	src="views/recipie-details.js"></script>
 	<script	src="routers/router.js"></script>
 
 </head>
@@ -22,7 +24,7 @@
 <!-- script to keep form submit from refreshing page -->
 <script type="text/javascript">
 	$('#form').submit(function(){
-		APP.router.yumRoute();
+		APP.router.navigate("search", {trigger: true});
 		return false;
 	});
 </script>

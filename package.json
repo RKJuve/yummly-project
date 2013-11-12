@@ -19,6 +19,7 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-jshint": "~0.7.1",
     "bower": "~1.2.7",
+
     "node-neat": "~1.0.0",
     "node-bourbon": "~1.0.0",
     "grunt-sass": "~0.8.0",
@@ -31,7 +32,7 @@
     "node-neat": "~1.0.0"
   },
   "scripts": {
-    "postinstall": "bower install && grunt",
+    "postinstall": "bower install && grunt onInstall",
     "start": "node app",
     "test": "grunt test"
   }
