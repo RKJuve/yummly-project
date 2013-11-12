@@ -22,8 +22,8 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ["app.js", "Gruntfile.js", "views/*", "public/**", "yummly-list.js", "**/*.scss"],
-      tasks: ['jshint', ""],
+      files: ["app.js", "Gruntfile.js", "views/*", "public/**", "yummly-list.js"],
+      tasks: ['jshint'],
       options: {
         livereload: true
       },

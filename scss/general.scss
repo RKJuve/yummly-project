@@ -1,7 +1,6 @@
 .container {
   @include outer-container;
   width: 90%;
-  color: #fff;
 }
 
 // @include span-columns(n of 6);
