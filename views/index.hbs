@@ -16,19 +16,28 @@
 
 </head>
 <body>
-<form id="form">
-<input id="query" type="text"></input>
-</form>
-<div id="bin" style="border: 2px solid; height: 600px; width: 600px">Type search string in box above and hit enter to search yummly recipie api</div>
 
-<!-- script to keep form submit from refreshing page -->
-<script type="text/javascript">
-	$('#form').submit(function(){
-		APP.router.navigate("search", {trigger: true});
-		return false;
-	});
-</script>
+<div class="container">
 
+	<div class="header">
+
+	</div><!-- end header -->
+
+	<form id="form">
+		<input id="query" type="text"></input>
+	</form>
+
+	<div id="bin" style="border: 2px solid; height: 600px; width: 600px">Type search string in box above and hit enter to search yummly recipie api</div>
+
+	<!-- script to keep form submit from refreshing page -->
+	<script type="text/javascript">
+		$('#form').submit(function(){
+			APP.router.navigate("search", {trigger: true});
+			return false;
+		});
+	</script>
+
+</div><!-- end container -->
 
 </body>
 </html>

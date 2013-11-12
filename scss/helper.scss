@@ -47,6 +47,7 @@ h1 {
   @include fontSize(32px);
 }
 
+
 // Results font-size outputted as pxs and rems!
 */
 
@@ -94,4 +95,14 @@ a:hover {
     background-color: $blue;
     color: #fff;
     text-shadow: none;
+}
+
+//–––––––––––––––––––––––––––––
+//        Components
+//–––––––––––––––––––––––––––––
+
+.button {
+  background-color: #ddd;
+  border: 1px solid #B6B6B6;
+  border-bottom: 7px solid #B6B6B6;
 }

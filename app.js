@@ -30,8 +30,8 @@ var sass = require("node-sass"),
 		neat = require("node-neat").includePaths;
 
 app.use( sass.middleware({
-	src: "/scss",
-	dest: "/css",
+	src: "scss/base.scss",
+	dest: "scss/base.css",
 	debug: true,
 	outputStyle: "compressed"
 }));
