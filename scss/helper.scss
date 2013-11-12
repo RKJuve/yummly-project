@@ -1,0 +1,97 @@
+//–––––––––––––––––––––––––––––
+// 			 	SASS Helpers
+//–––––––––––––––––––––––––––––
+
+// Colors:
+
+$Color1: #ffffff;
+$Color2: #ffffff;
+
+// Font sizes, based on modular scale:
+
+$teraXX:   121.500px;
+$teraX:    87.791px;
+$tera:     81.000px;
+$giga:     58.527px;
+$mega:     54.000px;
+$alpha:    39.018px;
+$beta:     36.000px;
+$gamma:    26.012px;
+$delta:    24.000px;
+$epsilon:  17.341px;
+$zeta:     16.000px;
+
+
+//–––––––––––––––––––––––––––––
+// 			    Mixins
+//–––––––––––––––––––––––––––––
+
+// Fiona Chan http://www.stubbornella.org/content/2013/07/01/easy-peasy-rem-conversion-with-sass/
+
+// Call the function
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+// Set up mixin that calls the function
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+// See use below:
+/*
+
+h1 {
+  @include fontSize(32px);
+}
+
+// Results font-size outputted as pxs and rems!
+*/
+
+//–––––––––––––––––––––––––––––
+// 			  Typography
+//–––––––––––––––––––––––––––––
+
+html {
+  font: normal 100%/1.5 'helvetica', 'arial', sans-serif;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  color: #000;
+}
+
+p {
+  margin: 0 0 1.5em;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #000;
+}
+
+::-moz-selection {
+    background-color: $blue;
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background-color: $blue;
+    color: #fff;
+    text-shadow: none;
+}

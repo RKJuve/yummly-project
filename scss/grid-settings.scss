@@ -1,5 +1,13 @@
-@import "neat-helpers";
+//–––––––––––––––––––––––––––––
+// 		 Neat Grid Settings
+//–––––––––––––––––––––––––––––
+
+@import "grid-settings";
 
 // Grid settings
 $grid-columns: 6;
 $max-width: em(700);
+
+// $small: new-breakpoint(min-width 500px 6);
+// $medium: new-breakpoint(min-width 750px 9);
+// $large: new-breakpoint(min-width 1100px 12);
