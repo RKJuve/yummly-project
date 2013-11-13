@@ -1,4 +1,3 @@
-
 //collection view
 APP.SearchResultsView = Backbone.View.extend({
 	el: "#bin",
@@ -18,7 +17,14 @@ APP.SearchResultView = Backbone.View.extend({
 	initialize: function(){
 		this.render();
 	},
+	events: {
+		"click a": "viewRecipeDetails"
+	},
+	viewRecipeDetails: function() {
+		var navTarget = "search/"+this.model.get('id');
+		APP.router.navigate(navTarget, {trigger: true});
+	},
 	render: function() {
-		this.$el.html("<h3><a href='/#search/"+this.model.get('id')+"'>"+this.model.get('id')+"</a></h3>");
+		this.$el.html("<h3><a>"+this.model.get('id')+"</a></h3>");
 	},
 });
