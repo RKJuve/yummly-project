@@ -11,10 +11,9 @@ module.exports = function(grunt) {
       }
     },
     sass: {
-      compile: {
+      dist: {
         options: {
-          includePaths: require("node-neat").includePaths,
-          outputStyle: "compressed"
+          style: "compressed"
         },
         files: {
           "css/base.css": "scss/base.scss"
@@ -36,7 +35,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-copy");
-  grunt.loadNpmTasks("grunt-sass");
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask("default", ["jshint", "copy", "sass"]);
