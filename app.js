@@ -25,14 +25,4 @@ var port = process.env.PORT || 3000;
 app.listen(port);
 console.log("The server is now listening on port %s", port);
 
-// Use and compile SASS
-
-var sass = require("node-sass"),
-		neat = require("node-neat").includePaths;
-
-app.use( sass.middleware({
-	src: "/scss",
-	dest: "/css",
-	debug: true,
-	outputStyle: "compressed"
 }));

@@ -75,7 +75,7 @@ p {
 }
 
 a {
-  color: $blue;
+  color: #ddd;
   text-decoration: none;
 }
 
@@ -85,13 +85,13 @@ a:hover {
 }
 
 ::-moz-selection {
-    background-color: $blue;
+    background-color: #ddd;
     color: #fff;
     text-shadow: none;
 }
 
 ::selection {
-    background-color: $blue;
+    background-color: #ddd;
     color: #fff;
     text-shadow: none;
 }
