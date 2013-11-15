@@ -3,8 +3,8 @@ APP.Router = Backbone.Router.extend({
 	routes: {
 		"search":"search",
 		"inventory": "inventoryList",
-		"inventory/:inventory_item_name": "inventoryItem",
-		"shopping-list-item": "shopping-list-item",
+		"inventory-item": "inventoryItem",
+		"shopping-list-item": "shoppingListItem",
 		"shopping": "shoppingList",
 		"week": "weeklySchedule",
 		"search/:recipe_id":"details"
@@ -44,24 +44,27 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	inventoryItem: function(inventory_item_name) {
-		APP.inventory = new APP.Inventory({id: inventory_item_name});
-		APP.inventory.fetch({
-			success: function() {
-				var inventoryListView = new InventoryListItem({
-					collection: APP.inventory
-				});
-				APP.inventoryListView.render();
-			}
-		});
-	},
-
-	inventoryList: function() {
+	inventoryItem: function() {
 		APP.inventory = new APP.Inventory();
 		APP.inventory.fetch({
 			success: function() {
+				APP.inventory1 = APP.inventory.get(01);
+				APP.inventoryListView1 = new APP.InventoryListView({
+					model: APP.inventory1
+				});
+				APP.inventoryListView1.render();
+				$("body").append(APP.inventoryListView1.$el);
+			}
+		});
+		console.log(APP.inventory.get(1));
+	},
+
+	inventoryList: function() {
+		APP.inventoryList = new APP.Inventory();
+		APP.inventoryList.fetch({
+			success: function() {
 				var inventoryListView = new InventoryListView({
-					collection: APP.inventory
+					collection: APP.inventoryList
 				});
 				$("body").append(inventoryListView.render().el);
 				console.log("You have reached the inventory list");
@@ -69,21 +72,32 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	// shoppingListItem: function() {
-	// 	console.log("You have reached the shopping list");
-	// 	APP.shoppingList = new APP.ShoppingList();
-	// },
-
-	shoppingList: function() {
+	shoppingListItem: function() {
+		console.log("You have reached the shopping list item");
 		APP.shoppingList = new APP.ShoppingList();
 		APP.shoppingList.fetch({
 			success: function() {
-				APP.shoppingListView = ShoppingList({
+				APP.shoppingListItem = APP.shoppingList.get(1);
+				APP.shoppingListView = new APP.shoppingListView({
+					model: APP.shoppingListItem
+				});
+				APP.shoppingListItem.render();
+				$("body").append(APP.shoppingListItem.$el);
+			}
+		});
+		console.log(APP.shoppingList.get(1));
+	},
+
+	shoppingList: function() {
+		console.log("You have reached the shopping list");
+		APP.shoppingList = new APP.ShoppingList();
+		APP.shoppingList.create({
+			success: function() {
+				APP.shoppingListView = new ShoppingListView({
 					collection: APP.shoppingList
 				});
 				//APP.shoppingListView.render();
-				$(body).append(shoppingListView.render().el);
-				console.log("You have reached the shopping list");
+				$("body").append(shoppingListView.render().el);
 			}
 		});
 	},
