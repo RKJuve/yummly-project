@@ -24,5 +24,3 @@ app.get("/", function(req, res) {
 var port = process.env.PORT || 3000;
 app.listen(port);
 console.log("The server is now listening on port %s", port);
-
-}));

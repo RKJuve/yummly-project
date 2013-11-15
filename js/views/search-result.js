@@ -26,5 +26,5 @@ APP.SearchResultView = Backbone.View.extend({
 	},
 	render: function() {
 		this.$el.html("<h3><a>"+this.model.get('id')+"</a></h3>");
-	},
+	}
 });
