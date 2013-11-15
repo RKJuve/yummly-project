@@ -1,4 +1,4 @@
 APP.ShoppingList = Backbone.Collection.extend({
 	model: APP.ShopppingListItem,
-	url: "/shopping"
+	url: "/list"
 });

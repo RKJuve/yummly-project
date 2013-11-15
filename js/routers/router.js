@@ -2,14 +2,18 @@ APP.Router = Backbone.Router.extend({
 
 	routes: {
 		"search":"search",
-		"inventory": "inventoryList",
-		"inventory/:inventory_item_name": "inventoryItem",
-		"shopping-list-item": "shopping-list-item",
-		"shopping": "shoppingList",
+		"inventory": "inventory",
+		"shoppingList": "shoppingList",
 		"week": "weeklySchedule",
 		"search/:recipe_id":"details"
 	},
 
+	default: function() {
+		console.log("router default");
+	},
+	secondRoute: function() {
+		console.log("second route hit");
+	},
 	details: function(recipie_id){
 		APP.recipieDetails = new APP.RecipieDetails({id: recipie_id});
 		APP.recipieDetails.fetch({
@@ -43,61 +47,22 @@ APP.Router = Backbone.Router.extend({
 			}
 		});
 	},
-
-	inventoryItem: function(inventory_item_name) {
-		APP.inventory = new APP.Inventory({id: inventory_item_name});
-		APP.inventory.fetch({
-			success: function() {
-				var inventoryListView = new InventoryListItem({
-					collection: APP.inventory
-				});
-				APP.inventoryListView.render();
-			}
-		});
-	},
-
-	inventoryList: function() {
+	inventory: function() {
+		console.log("You have reached the inventory list");
 		APP.inventory = new APP.Inventory();
-		APP.inventory.fetch({
-			success: function() {
-				var inventoryListView = new InventoryListView({
-					collection: APP.inventory
-				});
-				$("body").append(inventoryListView.render().el);
-				console.log("You have reached the inventory list");
-			}
-		});
 	},
-
-	// shoppingListItem: function() {
-	// 	console.log("You have reached the shopping list");
-	// 	APP.shoppingList = new APP.ShoppingList();
-	// },
-
 	shoppingList: function() {
+		console.log("You have reached the shopping list");
 		APP.shoppingList = new APP.ShoppingList();
-		APP.shoppingList.fetch({
-			success: function() {
-				APP.shoppingListView = ShoppingList({
-					collection: APP.shoppingList
-				});
-				APP.shoppingListView.render();
-				// $(body).append(shoppingListView.render().el);
-				// console.log("You have reached the shopping list");
-			}
-		});
 	},
-
 	week: function() {
 		console.log("You have reached the weekly schedule");
 		APP.weeklySchedule = new APP.WeeklySchedule();
 	}
-
+	
 
 });
 
 APP.router = new APP.Router();
-Backbone.history.start({
-	pushState: true,
-	root: "/"
-});
+
+Backbone.history.start({pushState: true, root: "/"});
