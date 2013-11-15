@@ -1,18 +1,21 @@
-APP.ShoppingListView = Backbone.View.extend({
+APP.ShoppingList = Backbone.View.extend({
 
 	tagName: "ul",
 	className: "shopping-list",
 
-
 	render: function() {
-		var attributes = this.model.toJSON();
-		this.$el.html(this.template(attributes));
+		this.collection.each(function(model) {
+			APP.shoppingListItem = new APP.ShoppingListItem({
+				model: model
+			});
+			this.$el.append(APP.shoppingListItem.render().el);
+		}, this);
 		return this;
 	}
 
 });
 
-APP.ShoppingListItemView = Backbone.View.extend({
+APP.ShoppingListItem = Backbone.View.extend({
 
 	tagName: "li",
 	className: "shopping-list-item",
