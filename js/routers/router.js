@@ -81,9 +81,9 @@ APP.Router = Backbone.Router.extend({
 				APP.shoppingListView = ShoppingList({
 					collection: APP.shoppingList
 				});
-				APP.shoppingListView.render();
-				// $(body).append(shoppingListView.render().el);
-				// console.log("You have reached the shopping list");
+				//APP.shoppingListView.render();
+				$(body).append(shoppingListView.render().el);
+				console.log("You have reached the shopping list");
 			}
 		});
 	},
@@ -98,6 +98,6 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	pushState: true,
+	//pushState: true,
 	root: "/"
 });
