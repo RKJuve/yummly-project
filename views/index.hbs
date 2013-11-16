@@ -2,7 +2,9 @@
 <html>
 <head>
 	<title>yummly api app vSUPERBETA </title>
+	<link rel="stylesheet" href="/base.css">
 	<script src="lib/jquery.min.js"></script>
+
 	<script	src="lib/underscore.js"></script>
 	<script	src="lib/backbone.js"></script>
 	<script	src="lib/handlebars-v1.1.2.js"></script>
@@ -20,19 +22,31 @@
 
 </head>
 <body>
-<form id="form">
-<input id="query" type="text"></input>
-</form>
-<div id="bin" style="border: 2px solid; height: 600px; width: 600px">Type search string in box above and hit enter to search yummly recipie api</div>
 
-<!-- script to keep form submit from refreshing page -->
-<script type="text/javascript">
-	$('#form').submit(function(){
-		APP.router.navigate("search", {trigger: true});
-		return false;
-	});
-</script>
+<section class="container">
 
+	<header class="header">
+
+	</header>
+
+	<section class="main">
+
+	<form id="form">
+	<input id="query" type="text"></input>
+	</form>
+	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
+
+	<!-- script to keep form submit from refreshing page -->
+	<script type="text/javascript">
+		$('#form').submit(function(){
+			APP.router.navigate("search", {trigger: true});
+			return false;
+		});
+	</script>
+
+	</section> <!-- end main -->
+
+</section> <!-- end container -->
 
 </body>
 </html>

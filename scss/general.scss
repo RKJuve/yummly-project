@@ -1,6 +1,25 @@
+html {
+	background-color: #F3F3F3;
+}
+
 .container {
   @include outer-container;
-  width: 90%;
+  max-width: 480px;
+  background-color: #F9F9F9;
+  padding-bottom: 1em;
+  margin-top: 4em;
+  box-shadow: 1px 6px 6px rgba(0, 0, 0, 0.25);
 }
+
+.header {
+	background-color: $green;
+	height: 3em;
+}
+
+.main {
+	padding: 2em;
+}
+
+
 
 // @include span-columns(n of 6);
