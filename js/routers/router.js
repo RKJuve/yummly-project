@@ -4,17 +4,12 @@ APP.Router = Backbone.Router.extend({
 		"search":"search",
 		"inventory": "inventory",
 		"inventory-item": "inventoryItem",
-		"shoppingList": "shoppingList",
+		"shopping-list": "shoppingList",
+		"shopping-list-item": "shoppingListItem",
 		"week": "weeklySchedule",
 		"search/:recipe_id":"details"
 	},
 
-	default: function() {
-		console.log("router default");
-	},
-	secondRoute: function() {
-		console.log("second route hit");
-	},
 	details: function(recipie_id){
 		APP.recipieDetails = new APP.RecipieDetails({id: recipie_id});
 		APP.recipieDetails.fetch({
@@ -50,8 +45,6 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	inventoryItem: function() {
-    console.log("inventoryItem() was hit");
-
     APP.inventory = new APP.Inventory();
     APP.inventory.fetch({
       success: function() {
@@ -61,30 +54,39 @@ APP.Router = Backbone.Router.extend({
         });
         APP.inventoryItemView1.render();
         $("body").append(APP.inventoryItemView1.$el);
-        console.log("SUCCESS!!");
-      },
-      error: function() {
-      	console.log(":(");
       }
     });
   },
 
 	inventory: function() {
-		console.log("You have reached the inventory list");
 		APP.inventory = new APP.Inventory();
 		APP.inventory.fetch({
 			success: function() {
 				var inventoryListView = new APP.InventoryList({
 					collection: APP.inventory
 				});
-				$("body").append(inventoryListView.render().el);
-				console.log("newView is shown");
+				inventoryListView.render();
 			}
 		});
 	},
-	shoppingList: function() {
+
+	shoppingListItem: function() {
+		APP.shopping = new APP.ShoppingList();
+		APP.shopping.fetch({
+			success: function() {
+				APP.shoppingListItem1 = APP.shopping.get(1);
+				APP.shoppingListItemView = new APP.ShoppingListItemView({
+					model: APP.shoppingListItem1
+				});
+				APP.shoppingListItemView.render();
+        $("body").append(APP.shoppingListItemView.$el);
+			}
+		});
+	},
+
+	shopping: function() {
 		console.log("You have reached the shopping list");
-		APP.shoppingList = new APP.ShoppingList();
+		//APP.shoppingList = new APP.ShoppingList();
 	},
 	week: function() {
 		console.log("You have reached the weekly schedule");

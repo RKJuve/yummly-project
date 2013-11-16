@@ -44,6 +44,17 @@ app.post("/inventory", function(req, res) {
 	console.log(id);
 });
 
+app.get("/shopping-list", function(req, res) {
+	res.json(db);
+});
+
+app.post("/shopping-list", function(req, res) {
+	req.body.id = db.length + 1;
+	db.push(req.body);
+	res.end();
+	console.log(id);
+});
+
 
 // start node server
 var port = process.env.PORT || 3000;
