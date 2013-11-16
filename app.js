@@ -9,9 +9,8 @@ var app = express()
 	.set("views", path.join(__dirname, "views"))
 	.set("view engine", "hbs")
 	.use(express.static(
-		path.join(__dirname, "js"),
-		path.join(__dirname, "css")
-		))
+		path.join(__dirname, "css")))
+	.use(express.static( path.join(__dirname, "js")))
 	.use(express.bodyParser());
 
 // set index view

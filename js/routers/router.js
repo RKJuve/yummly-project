@@ -59,10 +59,12 @@ APP.Router = Backbone.Router.extend({
 		console.log("You have reached the weekly schedule");
 		APP.weeklySchedule = new APP.WeeklySchedule();
 	}
-	
+
 
 });
 
 APP.router = new APP.Router();
-
-Backbone.history.start({pushState: true, root: "/"});
+Backbone.history.start({
+	// pushState: true,
+	root: "/"
+});
