@@ -1,4 +1,4 @@
-var DayofWeek = Backbone.Model.extend({
+APP.DayOfWeek = Backbone.Model.extend({
 	defaults: {
 		dayofWeek: undefined,
 		date: "Month, Day, Year",

@@ -6,7 +6,7 @@ APP.Router = Backbone.Router.extend({
 		"inventory-item": "inventoryItem",
 		"shopping-list": "shoppingList",
 		"shopping-list-item": "shoppingListItem",
-		"week": "weeklySchedule",
+		"week": "weeklyScheduleRoute",
 		"search/:recipe_id":"details"
 	},
 
@@ -84,13 +84,30 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	shopping: function() {
+	shoppingList: function() {
 		console.log("You have reached the shopping list");
-		//APP.shoppingList = new APP.ShoppingList();
+		APP.shoppingList = new APP.ShoppingList();
+		APP.shoppingList.fetch({
+			success: function() {
+				var shoppingListView = new APP.ShoppingListView({
+					collection: APP.shoppingList
+				});
+				shoppingListView.render();
+			}
+		});
 	},
-	week: function() {
+
+	weeklyScheduleRoute: function() {
 		console.log("You have reached the weekly schedule");
 		APP.weeklySchedule = new APP.WeeklySchedule();
+		APP.weeklySchedule.fetch({
+			success: function() {
+				var weeklyScheduleView = new APP.WeeklyScheduleView({
+					collection: APP.weeklySchedule
+				});
+				weeklyScheduleView.render();
+			}
+		});
 	}
 
 
