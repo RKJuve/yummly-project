@@ -3,6 +3,7 @@ APP.Router = Backbone.Router.extend({
 	routes: {
 		"search":"search",
 		"inventory": "inventory",
+		"inventory-item": "inventoryItem",
 		"shoppingList": "shoppingList",
 		"week": "weeklySchedule",
 		"search/:recipe_id":"details"
@@ -47,9 +48,39 @@ APP.Router = Backbone.Router.extend({
 			}
 		});
 	},
+
+	inventoryItem: function() {
+    console.log("inventoryItem() was hit");
+
+    APP.inventory = new APP.Inventory();
+    APP.inventory.fetch({
+      success: function() {
+        APP.inventoryItem1 = APP.inventory.get(1);
+        APP.inventoryItemView1 = new APP.InventoryItemView({
+          model: APP.inventoryItem1
+        });
+        APP.inventoryItemView1.render();
+        $("body").append(APP.inventoryItemView1.$el);
+        console.log("SUCCESS!!");
+      },
+      error: function() {
+      	console.log(":(");
+      }
+    });
+  },
+
 	inventory: function() {
 		console.log("You have reached the inventory list");
 		APP.inventory = new APP.Inventory();
+		APP.inventory.fetch({
+			success: function() {
+				var inventoryListView = new APP.InventoryList({
+					collection: APP.inventory
+				});
+				$("body").append(inventoryListView.render().el);
+				console.log("newView is shown");
+			}
+		});
 	},
 	shoppingList: function() {
 		console.log("You have reached the shopping list");
@@ -65,6 +96,6 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	// pushState: true,
+	pushState: true,
 	root: "/"
 });

@@ -12,11 +12,15 @@
 	<script	src="models/search-result.js"></script>
 	<script	src="models/recipie-details.js"></script>
 	<script	src="models/planned-recipie.js"></script>
+	<script	src="models/inventory-item.js"></script>
 	<script	src="models/shopping-list-item.js"></script>
 	<script src="collections/search-results.js"></script>
+	<script src="collections/inventory.js"></script>
 	<script	src="collections/planned-recipies.js"></script>
 	<script	src="collections/shopping-list.js"></script>
 	<script src="views/search-result.js"></script>
+	<script src="views/inventory.js"></script>
+	<script src="views/inventory-item.js"></script>
 	<script	src="views/recipie-details.js"></script>
 	<script	src="routers/router.js"></script>
 
@@ -30,20 +34,20 @@
 	</header>
 
 	<section class="main">
-
+<!--
 	<form id="form">
 	<input id="query" type="text"></input>
 	</form>
 	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
 
-	<!-- script to keep form submit from refreshing page -->
+	 script to keep form submit from refreshing page
 	<script type="text/javascript">
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
 	</script>
-
+-->
 	</section> <!-- end main -->
 
 </section> <!-- end container -->

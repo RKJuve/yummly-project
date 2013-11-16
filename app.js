@@ -18,6 +18,32 @@ app.get("/", function(req, res) {
 	res.render("index");
 });
 
+var db = [
+	{
+		id: 1,
+		name: "flour"
+	},
+	{
+		id: 2,
+		name: "milk"
+	},
+	{
+		id: 3,
+		name: "eggs"
+	}
+];
+
+app.get("/inventory", function(req, res) {
+	res.json(db);
+});
+
+app.post("/inventory", function(req, res) {
+	req.body.id = db.length + 1;
+	db.push(req.body);
+	res.end();
+	console.log(id);
+});
+
 
 // start node server
 var port = process.env.PORT || 3000;
