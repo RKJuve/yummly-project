@@ -18,13 +18,19 @@ APP.SearchResultView = Backbone.View.extend({
 		this.render();
 	},
 	events: {
-		"click a": "viewRecipeDetails"
+		"click": "viewRecipeDetails"
 	},
 	viewRecipeDetails: function() {
 		var navTarget = "search/"+this.model.get('id');
 		APP.router.navigate(navTarget, {trigger: true});
 	},
 	render: function() {
-		this.$el.html("<h3><a>"+this.model.get('id')+"</a></h3>");
+		var source = $("#search-result-template").html();
+		console.log(source);
+		var template = Handlebars.compile(source);
+		var context = this.model.toJSON();
+		//console.log(context);
+		var html = template(context);
+		this.$el.html(html);
 	},
 });
