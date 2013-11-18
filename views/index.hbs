@@ -69,11 +69,12 @@
 	<a href="#menu" class="menu-link">Menu</a>
 	<nav id="menu" role="navigation">
 		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Products</a></li>
-			<li><a href="#">Services</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="#" class="home">Home</a></li>
+			<li><a href="#" class="search">Search</a></li>
+			<li><a href="#" class="inventory">Inventory</a></li>
+			<li><a href="#" class="week">Weekly Schedule</a></li>
+			<li><a href="#" class="shopping">Shopping List</a></li>
+			<li><a href="#" class="favorites">Favorites</a></li>
 		</ul>
 	</nav>
 
@@ -90,6 +91,33 @@
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
+		});
+	</script>
+
+	<script>
+		$("a.home").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("/", {trigger: true});
+		});
+		$("a.search").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("search", {trigger: true});
+		});
+		$("a.inventory").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("inventory", {trigger: true});
+		});
+		$("a.week").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("week", {trigger: true});
+		});
+		$("a.shopping").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("shopping", {trigger: true});
+		});
+		$("a.favorites").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("favorites", {trigger: true});
 		});
 	</script>
 
