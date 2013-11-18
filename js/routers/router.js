@@ -147,6 +147,6 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	pushState: true,
+	//pushState: true,
 	root: "/"
 });

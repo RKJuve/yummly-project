@@ -7,6 +7,8 @@
 	<script	src="lib/underscore.js"></script>
 	<script	src="lib/backbone.js"></script>
 	<script	src="lib/handlebars-v1.1.2.js"></script>
+	<script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js" type="text/javascript"></script>
+	</script>
 	<script src="parsers/ingredientParser.js"></script>
 	<script	src="main.js"></script>
 	<script	src="models/search-result.js"></script>
@@ -36,6 +38,7 @@
 	<script	src="views/favorite.js"></script>
 	<script	src="views/favorites.js"></script>
 	<script	src="routers/router.js"></script>
+	<script src="dropbox.js"></script>
 
 </head>
 <body>
@@ -54,14 +57,27 @@
 	<input id="query" type="text"></input>
 	</form>
 	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
+	<button onclick="client.authenticate()">auth</button>
 	<div class="hook"></div>
 
 	<!-- script to keep form submit from refreshing page -->
 	<script type="text/javascript">
+	$(document).ready(function(){
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
+	});
+
+
+
+
+
+
+
+
+
+
 	</script>
 
 	</section> <!-- end main -->
