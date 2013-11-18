@@ -1,12 +1,14 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
-		"search":"search",
-		"inventory": "inventory",
-		"shoppingList": "shoppingList",
-		"week": "weeklySchedule",
-		"search/:recipe_id":"details",
-		"addRecipe":"addRecipe"
+		"inventory-item": "inventoryItem",
+		"shopping-list": "shoppingList",
+		"shopping-list-item": "shoppingListItem",
+		"week": "weeklyScheduleRoute",
+		"search/:recipe_id": "details",
+		"favorite": "favorite",
+		"favorites": "favorites"
+		"addRecipe": "addRecipe"
 	},
 	addRecipe: function(){
 		APP.addRecipeView = new APP.AddRecipeView();
@@ -45,17 +47,98 @@ APP.Router = Backbone.Router.extend({
 			}
 		});
 	},
+
+	inventoryItem: function() {
+    APP.inventory = new APP.Inventory();
+    APP.inventory.fetch({
+      success: function() {
+        APP.inventoryItem1 = APP.inventory.get(1);
+        APP.inventoryItemView1 = new APP.InventoryItemView({
+          model: APP.inventoryItem1
+        });
+        APP.inventoryItemView1.render();
+        $("body").append(APP.inventoryItemView1.$el);
+      }
+    });
+  },
+
 	inventory: function() {
-		console.log("You have reached the inventory list");
 		APP.inventory = new APP.Inventory();
+		APP.inventory.fetch({
+			success: function() {
+				var inventoryListView = new APP.InventoryList({
+					collection: APP.inventory
+				});
+				inventoryListView.render();
+			}
+		});
 	},
+
+	shoppingListItem: function() {
+		APP.shopping = new APP.ShoppingList();
+		APP.shopping.fetch({
+			success: function() {
+				APP.shoppingListItem1 = APP.shopping.get(1);
+				APP.shoppingListItemView = new APP.ShoppingListItemView({
+					model: APP.shoppingListItem1
+				});
+				APP.shoppingListItemView.render();
+        $("body").append(APP.shoppingListItemView.$el);
+			}
+		});
+	},
+
 	shoppingList: function() {
 		console.log("You have reached the shopping list");
 		APP.shoppingList = new APP.ShoppingList();
+		APP.shoppingList.fetch({
+			success: function() {
+				var shoppingListView = new APP.ShoppingListView({
+					collection: APP.shoppingList
+				});
+				shoppingListView.render();
+			}
+		});
 	},
-	week: function() {
+
+	weeklyScheduleRoute: function() {
 		console.log("You have reached the weekly schedule");
 		APP.weeklySchedule = new APP.WeeklySchedule();
+		APP.weeklySchedule.fetch({
+			success: function() {
+				var weeklyScheduleView = new APP.WeeklyScheduleView({
+					collection: APP.weeklySchedule
+				});
+				weeklyScheduleView.render();
+			}
+		});
+	},
+
+	favorite: function() {
+		APP.favorites = new APP.Favorites();
+		APP.favorites.fetch({
+			success: function() {
+				APP.favoriteRecipe1 = APP.favorites.get(1);
+				APP.favoriteView = new APP.FavoriteView({
+					model: APP.favoriteRecipe1
+				});
+				APP.favoriteView.render();
+				$("body").append(APP.favoriteView.$el);
+				console.log(APP.favoriteRecipe1);
+			}
+		});
+	},
+
+	favorites: function() {
+		APP.favorites = new APP.Favorites();
+		APP.favorites.fetch({
+			success: function() {
+				APP.favoritesView = new APP.FavoritesView({
+					collection: APP.favorites
+				});
+				APP.favoritesView.render();
+			}
+		});
 	}
 
 
@@ -63,6 +146,6 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	//pushState: true,
+	pushState: true,
 	root: "/"
 });
