@@ -4,7 +4,10 @@ html {
 
 .container {
   @include outer-container;
+  overflow: hidden;
   max-width: 480px;
+  height: 700px;
+  overflow-y: scroll;
   background-color: #F9F9F9;
   padding-bottom: 1em;
   margin-top: 4em;

@@ -1,0 +1,39 @@
+// http://codepen.io/bradfrost/pen/IEBrz
+.content {
+  position: relative;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.content.active {
+  left: 16em;
+}
+a.menu-link {
+    float: left;
+    display: block;
+    padding: 1em;
+}
+nav[role=navigation] {
+  background: $green;
+  clear: both;
+  overflow: hidden;
+}
+.js nav[role=navigation] {
+  width: 16em;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -16em;
+}
+nav[role=navigation] ul {
+  margin: 0;
+  padding: 0;
+}
+nav[role=navigation] li a {
+  display: block;
+  padding: 0.8em;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}

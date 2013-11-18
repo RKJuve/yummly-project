@@ -2,13 +2,24 @@
 <html>
 <head>
 	<title>yummly api app vSUPERBETA </title>
+
+	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/base.css">
+
+	<!-- Main script -->
+	<script	src="main.js"></script>
+
+	<!-- Library scripts -->
 	<script src="lib/jquery.min.js"></script>
 	<script	src="lib/underscore.js"></script>
 	<script	src="lib/backbone.js"></script>
 	<script	src="lib/handlebars-v1.1.2.js"></script>
+	<script	src="lib/responsive-nav.min.js"></script>
+
+	<!-- Parser script -->
 	<script src="parsers/ingredientParser.js"></script>
-	<script	src="main.js"></script>
+
+	<!-- Backbone models -->
 	<script	src="models/search-result.js"></script>
 	<script	src="models/recipie-details.js"></script>
 	<script	src="models/shopping-list-item.js"></script>
@@ -17,6 +28,8 @@
 	<script	src="models/shopping-list-item.js"></script>
 	<script	src="models/day-of-week.js"></script>
 	<script	src="models/favorite.js"></script>
+
+	<!-- Backbone collections -->
 	<script src="collections/search-results.js"></script>
 	<script src="collections/inventory.js"></script>
 	<script	src="collections/planned-recipies.js"></script>
@@ -24,6 +37,8 @@
 	<script	src="collections/user-recipes.js"></script>
 	<script	src="collections/week.js"></script>
 	<script	src="collections/favorites.js"></script>
+
+	<!-- Backbone views -->
 	<script src="views/search-result.js"></script>
 	<script src="views/inventory.js"></script>
 	<script src="views/inventory-item.js"></script>
@@ -35,16 +50,27 @@
 	<script	src="views/day-of-week.js"></script>
 	<script	src="views/favorite.js"></script>
 	<script	src="views/favorites.js"></script>
+
+	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
 
 </head>
 <body>
 
-<section class="container">
+<section class="container" id="container">
+<section class="content" id="content">
 
-	<header class="header">
+	<a href="#menu" class="menu-link">Menu</a>
+	<nav id="menu" role="navigation">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Products</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</nav>
 
-	</header>
 
 	<section class="main">
 
@@ -52,7 +78,6 @@
 	<input id="query" type="text"></input>
 	</form>
 	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
-	<div class="hook"></div>
 
 	<!-- script to keep form submit from refreshing page -->
 	<script type="text/javascript">
@@ -62,8 +87,16 @@
 		});
 	</script>
 
-	</section> <!-- end main -->
+	<script>
+    var nav = responsiveNav(".nav-collapse", {
+		  animate: true,
+		  transition: 400,
+		  label: "Menu"
+		});
+	</script>
 
+	</section> <!-- end main -->
+</section> <!-- end content -->
 </section> <!-- end container -->
 
 </body>
