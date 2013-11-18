@@ -5,9 +5,10 @@ APP.Router = Backbone.Router.extend({
 		"shopping-list": "shoppingList",
 		"shopping-list-item": "shoppingListItem",
 		"week": "weeklyScheduleRoute",
+		"search": "search",
 		"search/:recipe_id": "details",
 		"favorite": "favorite",
-		"favorites": "favorites"
+		"favorites": "favorites",
 		"addRecipe": "addRecipe"
 	},
 	addRecipe: function(){
