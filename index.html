@@ -17,6 +17,7 @@
 	<script	src="lib/responsive-nav.min.js"></script>
 
 	<!-- Parser script -->
+	<script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js" type="text/javascript"></script>
 	<script src="parsers/ingredientParser.js"></script>
 
 	<!-- Backbone models -->
@@ -53,6 +54,7 @@
 
 	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
+	<script src="dropbox.js"></script>
 
 </head>
 <body>
@@ -85,13 +87,17 @@
 	<input id="query" type="text"></input>
 	</form>
 	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
+	<button class="login">auth</button>
 
 	<!-- script to keep form submit from refreshing page -->
 	<script type="text/javascript">
+	$(document).ready(function(){
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
+	});
+
 	</script>
 
 	<script>

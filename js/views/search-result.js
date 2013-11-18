@@ -26,10 +26,8 @@ APP.SearchResultView = Backbone.View.extend({
 	},
 	render: function() {
 		var source = $("#search-result-template").html();
-		console.log(source);
 		var template = Handlebars.compile(source);
 		var context = this.model.toJSON();
-		//console.log(context);
 		var html = template(context);
 		this.$el.html(html);
 	},
