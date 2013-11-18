@@ -7,7 +7,9 @@ APP.Router = Backbone.Router.extend({
 		"shopping-list": "shoppingList",
 		"shopping-list-item": "shoppingListItem",
 		"week": "weeklyScheduleRoute",
-		"search/:recipe_id":"details"
+		"search/:recipe_id": "details",
+		"favorite": "favorite",
+		"favorites": "favorites"
 	},
 
 	details: function(recipie_id){
@@ -106,6 +108,33 @@ APP.Router = Backbone.Router.extend({
 					collection: APP.weeklySchedule
 				});
 				weeklyScheduleView.render();
+			}
+		});
+	},
+
+	favorite: function() {
+		APP.favorites = new APP.Favorites();
+		APP.favorites.fetch({
+			success: function() {
+				APP.favoriteRecipe1 = APP.favorites.get(1);
+				APP.favoriteView = new APP.FavoriteView({
+					model: APP.favoriteRecipe1
+				});
+				APP.favoriteView.render();
+				$("body").append(APP.favoriteView.$el);
+				console.log(APP.favoriteRecipe1);
+			}
+		});
+	},
+
+	favorites: function() {
+		APP.favorites = new APP.Favorites();
+		APP.favorites.fetch({
+			success: function() {
+				APP.favoritesView = new APP.FavoritesView({
+					collection: APP.favorites
+				});
+				APP.favoritesView.render();
 			}
 		});
 	}

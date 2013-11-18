@@ -48,6 +48,22 @@ var weekdb = [
 	}
 ];
 
+var favoritesdb = [
+	{
+		id: 1,
+		name: "Favorite Recipe 1"
+	},
+	{
+		id: 2,
+		name: "Favorite Recipe 2"
+	},
+	{
+		id: 3,
+		name: "Favorite Recipe 3"
+	}
+];
+
+
 app.get("/inventory", function(req, res) {
 	res.json(db);
 });
@@ -75,8 +91,19 @@ app.get("/week", function(req, res) {
 });
 
 app.post("/week", function(req, res) {
-	req.body.id = db.length + 1;
+	//req.body.id = db.length + 1;
 	weekdb.push(req.body);
+	res.end();
+	console.log(id);
+});
+
+app.get("/favorites", function(req, res) {
+	res.json(favoritesdb);
+});
+
+app.post("/favorites", function(req, res) {
+	//req.body.id = db.length + 1;
+	favoritesdb.push(req.body);
 	res.end();
 	console.log(id);
 });
