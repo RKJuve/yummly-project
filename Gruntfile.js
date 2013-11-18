@@ -31,12 +31,19 @@ module.exports = function(grunt) {
         tasks: ["sass"],
       },
     },
+    peg: {
+    compile: {
+      src: "js/parsers/ingredientParser.pegjs",
+      dest: "js/parsers/ingredientParser.js"
+    }
+  }
   });
 
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-peg');
 
   grunt.registerTask("default", ["jshint", "copy", "sass"]);
   grunt.registerTask("onInstall", ["copy", "sass"]);

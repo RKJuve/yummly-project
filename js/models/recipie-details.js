@@ -6,5 +6,9 @@ APP.RecipieDetails = Backbone.Model.extend({
 			APP.plannedRecipies = new APP.PlannedRecipies();
 		}
 		APP.plannedRecipies.add(APP.recipieDetails);
+	},
+	mux: function() {
+		var temp = '["' + this.attributes.ingredientLines.join('", "') + '"]';
+		this.attributes.ingredientLines = parser.parse(temp);
 	}
 });
