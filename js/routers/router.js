@@ -5,14 +5,12 @@ APP.Router = Backbone.Router.extend({
 		"inventory": "inventory",
 		"shoppingList": "shoppingList",
 		"week": "weeklySchedule",
-		"search/:recipe_id":"details"
+		"search/:recipe_id":"details",
+		"addRecipe":"addRecipe"
 	},
-
-	default: function() {
-		console.log("router default");
-	},
-	secondRoute: function() {
-		console.log("second route hit");
+	addRecipe: function(){
+		APP.addRecipeView = new APP.AddRecipeView();
+		console.log("add recipe hit");
 	},
 	details: function(recipie_id){
 		APP.recipieDetails = new APP.RecipieDetails({id: recipie_id});
@@ -65,6 +63,6 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	// pushState: true,
+	//pushState: true,
 	root: "/"
 });
