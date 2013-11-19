@@ -1,6 +1,8 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
+		"home": "home",
+		"inventory": "inventory",
 		"inventory-item": "inventoryItem",
 		"shopping-list": "shoppingList",
 		"shopping-list-item": "shoppingListItem",
@@ -68,6 +70,7 @@ APP.Router = Backbone.Router.extend({
   },
 
 	inventory: function() {
+		console.log("Inventory route has been hit");
 		APP.inventory = new APP.Inventory();
 		APP.inventory.fetch({
 			success: function() {
@@ -75,6 +78,7 @@ APP.Router = Backbone.Router.extend({
 					collection: APP.inventory
 				});
 				inventoryListView.render();
+				console.log("hi");
 			}
 		});
 	},
@@ -144,6 +148,10 @@ APP.Router = Backbone.Router.extend({
 				APP.favoritesView.render();
 			}
 		});
+	},
+
+	home: function() {
+		APP.searchView = new APP.SearchView();
 	}
 
 

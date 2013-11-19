@@ -1,6 +1,6 @@
 APP.FavoritesView = Backbone.View.extend({
 
-	el: ".container",
+	el: "#bin",
 	tagName: "ul",
 	className: "favorites",
 

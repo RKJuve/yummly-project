@@ -13,43 +13,52 @@ var app = express()
 
 var db = [
 	{
+		id: 1,
 		name: "flour"
 	},
 	{
+		id: 2,
 		name: "milk"
 	},
 	{
+		id: 3,
 		name: "eggs"
 	}
 ];
 
 var weekdb = [
 	{
+		id: 1,
 		day: "Monday"
 	},
 	{
+		id: 2,
 		day: "Tuesday"
 	},
 	{
+		id: 3,
 		day: "Saturday"
 	}
 ];
 
 var favoritesdb = [
 	{
+		id: 1,
 		name: "Favorite Recipe 1"
 	},
 	{
+		id: 2,
 		name: "Favorite Recipe 2"
 	},
 	{
+		id: 3,
 		name: "Favorite Recipe 3"
 	}
 ];
 
- var getId = function() {
-   return id++;
- };
+ // var getId = function() {
+ //   return id++;
+ // };
 
 
 app.get("/inventory", function(req, res) {
@@ -57,7 +66,7 @@ app.get("/inventory", function(req, res) {
 });
 
 app.post("/inventory", function(req, res) {
-	req.body.id = db.length + 1;
+	//req.body.id = db.length + 1;
 	db.push(req.body);
 	res.end();
 	console.log(id);
@@ -68,7 +77,7 @@ app.get("/shopping-list", function(req, res) {
 });
 
 app.post("/shopping-list", function(req, res) {
-	req.body.id = db.length + 1;
+	//req.body.id = db.length + 1;
 	db.push(req.body);
 	res.end();
 	console.log(id);
@@ -79,7 +88,7 @@ app.get("/week", function(req, res) {
 });
 
 app.post("/week", function(req, res) {
-	req.body.id = db.length + 1;
+	//req.body.id = db.length + 1;
 	weekdb.push(req.body);
 	res.end();
 	console.log(id);
@@ -90,8 +99,8 @@ app.get("/favorites", function(req, res) {
 });
 
 app.post("/favorites", function(req, res) {
-	req.body.id = favoritesdb.length + 1;
-	getId();
+	//req.body.id = favoritesdb.length + 1;
+	//getId();
 	favoritesdb.push(req.body);
 	res.end();
 	console.log(id);
