@@ -43,8 +43,13 @@
 </head>
 <body>
 <script id="search-result-template" type="text/template">
-		id: {{id}} after
-	</script>
+	{{recipeName}}
+</script>
+<script id="user-recipe-form" type="text/template">
+	<form id="recipe-form">
+	<input type="text" placeholder="recipe title"/>
+	</form>
+</script>
 <section class="container">
 
 	<header class="header">

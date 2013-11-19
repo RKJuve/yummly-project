@@ -1,10 +1,18 @@
 APP.AddRecipeView = Backbone.View.extend({
 	el: "#bin",
+	events: {
+		"submit form": "submit"
+	},
 	initialize: function() {
 		this.render();
 	},
+	submit: function() {
+		console.log('form submit');
+		return false;
+	},
 	render: function() {
-		console.log("add recipe render");
-		this.$el.html('<form><input type="text"></input><input type="text"></input><input type="text"></input></form>');
+		var source = $("#user-recipe-form").html();
+		template = Handlebars.compile(source); 
+		this.$el.html(template);
 	}
 });
