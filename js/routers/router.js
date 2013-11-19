@@ -45,6 +45,10 @@ APP.Router = Backbone.Router.extend({
 				}
 				APP.searchResultsView = new APP.SearchResultsView({collection: APP.searchResults});
 				APP.searchResultsView.render();
+				$('#form').submit(function(){
+					APP.router.navigate("search", {trigger: true});
+					return false;
+				});
 			}
 		});
 	},
@@ -147,6 +151,6 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	pushState: true,
+	//pushState: true,
 	root: "/"
 });

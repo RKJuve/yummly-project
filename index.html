@@ -2,13 +2,25 @@
 <html>
 <head>
 	<title>yummly api app vSUPERBETA </title>
+
+	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/base.css">
+
+	<!-- Main script -->
+	<script	src="main.js"></script>
+
+	<!-- Library scripts -->
 	<script src="lib/jquery.min.js"></script>
 	<script	src="lib/underscore.js"></script>
 	<script	src="lib/backbone.js"></script>
 	<script	src="lib/handlebars-v1.1.2.js"></script>
+	<script	src="lib/responsive-nav.min.js"></script>
+
+	<!-- Parser script -->
+	<script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js" type="text/javascript"></script>
 	<script src="parsers/ingredientParser.js"></script>
-	<script	src="main.js"></script>
+
+	<!-- Backbone models -->
 	<script	src="models/search-result.js"></script>
 	<script	src="models/recipie-details.js"></script>
 	<script	src="models/shopping-list-item.js"></script>
@@ -17,6 +29,8 @@
 	<script	src="models/shopping-list-item.js"></script>
 	<script	src="models/day-of-week.js"></script>
 	<script	src="models/favorite.js"></script>
+
+	<!-- Backbone collections -->
 	<script src="collections/search-results.js"></script>
 	<script src="collections/inventory.js"></script>
 	<script	src="collections/planned-recipies.js"></script>
@@ -24,6 +38,8 @@
 	<script	src="collections/user-recipes.js"></script>
 	<script	src="collections/week.js"></script>
 	<script	src="collections/favorites.js"></script>
+
+	<!-- Backbone views -->
 	<script src="views/search-result.js"></script>
 	<script src="views/inventory.js"></script>
 	<script src="views/inventory-item.js"></script>
@@ -35,18 +51,58 @@
 	<script	src="views/day-of-week.js"></script>
 	<script	src="views/favorite.js"></script>
 	<script	src="views/favorites.js"></script>
+
+	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
+	<script src="dropbox.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
+</script>
 
 </head>
 <body>
+
+<!-- Templates -->
+
 <script id="search-result-template" type="text/template">
-		id: {{id}} after
-	</script>
-<section class="container">
+	{{recipeName}}
+</script>
 
-	<header class="header">
+<script id="user-recipe-form" type="text/template">
+	<form id="recipe-form">
+	<label for"recipeName">Recipe Name:</label>
+	<input type="text" id="recipeName" placeholder="recipe name"/>
+	<label for"ingredient_0">Ingredients:</label>
+	<input type="text" id="ingredient_0" placeholder="..."/>
+	<button id="addLine" type="button">Add another line</button>
+	</form>
+</script>
 
-	</header>
+
+<div class="welcome">
+
+	<h1>Welcome to the Yummly App</h1>
+
+	<button class="login">Sign in with Dropbox!</button>
+
+</div>
+
+<section class="container" id="container">
+<section class="content" id="content">
+
+
+	<a href="#menu" class="menu-link">Menu</a>
+	<nav id="menu" role="navigation">
+		<ul>
+			<li><a href="#" class="home">Home</a></li>
+			<li><a href="#" class="search">Search</a></li>
+			<li><a href="#" class="inventory">Inventory</a></li>
+			<li><a href="#" class="week">Weekly Schedule</a></li>
+			<li><a href="#" class="shopping">Shopping List</a></li>
+			<li><a href="#" class="favorites">Favorites</a></li>
+		</ul>
+	</nav>
+
 
 	<section class="main">
 
@@ -54,18 +110,53 @@
 	<input id="query" type="text"></input>
 	</form>
 	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
-	<div class="hook"></div>
 
-	<!-- script to keep form submit from refreshing page -->
+
+	<!-- script to keep form submit from refreshing page
+		and navigate to the search route -->
 	<script type="text/javascript">
+	$(document).ready(function(){
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
+		$(".login").click(function(e) {
+			e.preventDefault();
+			client.authenticate();
+		});
+
+	});
+	</script>
+
+	<script>
+		$("a.home").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("/", {trigger: true});
+		});
+		$("a.search").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("search", {trigger: true});
+		});
+		$("a.inventory").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("inventory", {trigger: true});
+		});
+		$("a.week").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("week", {trigger: true});
+		});
+		$("a.shopping").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("shopping", {trigger: true});
+		});
+		$("a.favorites").click(function(e) {
+			e.preventDefault();
+			APP.router.navigate("favorites", {trigger: true});
+		});
 	</script>
 
 	</section> <!-- end main -->
-
+</section> <!-- end content -->
 </section> <!-- end container -->
 
 </body>
