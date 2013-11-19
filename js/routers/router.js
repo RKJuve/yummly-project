@@ -1,6 +1,7 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
+		"": "home",
 		"inventory": "inventory",
 		"inventory-item": "inventoryItem",
 		"shopping-list": "shoppingList",
@@ -149,6 +150,15 @@ APP.Router = Backbone.Router.extend({
 				});
 				APP.favoritesView.render();
 			}
+		});
+	},
+
+	home: function() {
+		APP.homeView = new APP.HomeView();
+		APP.homeView.render();
+		$('#form').submit(function(){
+			APP.router.navigate("search", {trigger: true});
+			return false;
 		});
 	}
 

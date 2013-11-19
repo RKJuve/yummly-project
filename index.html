@@ -51,6 +51,7 @@
 	<script	src="views/day-of-week.js"></script>
 	<script	src="views/favorite.js"></script>
 	<script	src="views/favorites.js"></script>
+	<script	src="views/home.js"></script>
 
 	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
@@ -66,6 +67,16 @@
 
 <!-- Templates -->
 
+<<<<<<< Updated upstream
+=======
+<script id="search-bar" type="text/template">
+	<form id="form">
+	<label for="query">Search Yummly</label>
+	<input id="query" type="text"></input>
+	</form>
+</script>
+
+>>>>>>> Stashed changes
 <script id="search-result-template" type="text/template">
 	{{recipeName}}
 </script>
@@ -109,11 +120,7 @@
 
 	<section class="main">
 
-	<form id="form">
-	<input id="query" type="text"></input>
-	</form>
-	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
-
+	<div id="bin"></div>
 
 	<!-- script to keep form submit from refreshing page
 		and navigate to the search route -->
@@ -134,7 +141,7 @@
 	<script>
 		$("a.home").click(function(e) {
 			e.preventDefault();
-			APP.router.navigate("/", {trigger: true});
+			APP.router.navigate("", {trigger: true});
 		});
 		$("a.search").click(function(e) {
 			e.preventDefault();
