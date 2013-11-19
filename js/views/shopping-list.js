@@ -1,6 +1,6 @@
 APP.ShoppingListView = Backbone.View.extend({
 
-	el: ".container",
+	el: "#bin",
 	tagName: "ul",
 	className: "shopping-list",
 
