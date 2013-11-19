@@ -45,6 +45,7 @@
 	<script src="views/inventory-item.js"></script>
 	<script	src="views/recipie-details.js"></script>
 	<script	src="views/add-recipe.js"></script>
+	<script	src="views/user-recipes.js"></script>
 	<script	src="views/shopping-list-item.js"></script>
 	<script	src="views/shopping-list.js"></script>
 	<script	src="views/week.js"></script>
@@ -75,9 +76,9 @@
 	<label for"recipeName">Recipe Name:</label>
 	<input type="text" id="recipeName" placeholder="recipe name"/>
 	<label for"ingredient_0">Ingredients:</label>
-	<input type="text" id="ingredient_0" placeholder="..."/>
+	<input type="text" id="ingredient_1" placeholder="..."/>
 	<button id="addLine" type="button">Add another line</button>
-	<button type="submit">Save</button>
+	<button id="save" type="button">Save</button>
 	</form>
 </script>
 
@@ -103,6 +104,8 @@
 			<li><a href="#" class="week">Weekly Schedule</a></li>
 			<li><a href="#" class="shopping">Shopping List</a></li>
 			<li><a href="#" class="favorites">Favorites</a></li>
+			<li><a href="javascript:APP.router.navigate('addRecipe', {trigger: true});" class="addRecipe">Add Recipe</a></li>
+			<li><a href="javascript:APP.router.navigate('userRecipes', {trigger: true});" class="userRecipes">User Recipes</a></li>
 		</ul>
 	</nav>
 
@@ -119,9 +122,9 @@
 		and navigate to the search route -->
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('#form').submit(function(){
+		$('#form').submit(function(e){
+			e.preventDefault;
 			APP.router.navigate("search", {trigger: true});
-			return false;
 		});
 		$(".login").click(function(e) {
 			e.preventDefault();
