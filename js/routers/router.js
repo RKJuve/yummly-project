@@ -1,7 +1,6 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
-		"": "home",
 		"inventory": "inventory",
 		"inventory-item": "inventoryItem",
 		"shopping-list": "shoppingList",
@@ -12,7 +11,8 @@ APP.Router = Backbone.Router.extend({
 		"favorite": "favorite",
 		"favorites": "favorites",
 		"addRecipe": "addRecipe",
-		"userRecipes": "userRecipes"
+		"userRecipes": "userRecipes",
+		"home": "home"
 	},
 	userRecipes: function () {
 		APP.userRecipesView = new APP.UserRecipesView();	
@@ -154,6 +154,7 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	home: function() {
+		console.log("home route hit");
 		APP.homeView = new APP.HomeView();
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
@@ -166,6 +167,5 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	//pushState: true,
 	root: "/"
 });

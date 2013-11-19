@@ -106,12 +106,15 @@
 	<a href="#menu" class="menu-link">Menu</a>
 	<nav id="menu" role="navigation">
 		<ul>
-			<li><a href="#" class="home">Home</a></li>
+			<li><a href="javascript:APP.router.navigate('home', {trigger: true});" class="home">Home</a></li>
 			<li><a href="#" class="search">Search</a></li>
 			<li><a href="#" class="inventory">Inventory</a></li>
 			<li><a href="#" class="week">Weekly Schedule</a></li>
 			<li><a href="#" class="shopping">Shopping List</a></li>
 			<li><a href="#" class="favorites">Favorites</a></li>
+			<li><a href="javascript:APP.router.navigate('addRecipe', {trigger: true});" class="addRecipe">Add Recipe</a></li>
+            <li><a href="javascript:APP.router.navigate('userRecipes', {trigger: true});" class="userRecipes">User Recipes</a></li>
+                
 		</ul>
 	</nav>
 
