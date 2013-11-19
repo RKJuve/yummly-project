@@ -6,12 +6,14 @@ APP.SearchResultsView = Backbone.View.extend({
 		this.collection.each(function(model){
 			APP.searchResultView = new APP.SearchResultView({model:model});
 			this.$el.append(APP.searchResultView.el);
+			this.$el.find("form").on("submit", function(event) {
+				console.log("fire");
+				//event.preventDefault();
+				APP.router.search();
+				APP.router.navigate("search", {trigger: true});
+			});
 		}, this);
-		$('#form').submit(function(e){
-			e.preventDefault;
-			APP.router.navigate("search", {trigger: true});
-		});
-	},
+	}
 
 });
 

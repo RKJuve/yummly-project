@@ -67,8 +67,6 @@
 
 <!-- Templates -->
 
-<<<<<<< Updated upstream
-=======
 <script id="search-bar" type="text/template">
 	<form id="form">
 	<label for="query">Search Yummly</label>
@@ -76,7 +74,6 @@
 	</form>
 </script>
 
->>>>>>> Stashed changes
 <script id="search-result-template" type="text/template">
 	{{recipeName}}
 </script>
@@ -104,7 +101,7 @@
 <section class="container" id="container">
 <section class="content" id="content">
 
-
+<header class="header">
 	<a href="#menu" class="menu-link">Menu</a>
 	<nav id="menu" role="navigation">
 		<ul>
@@ -116,11 +113,16 @@
 			<li><a href="#" class="favorites">Favorites</a></li>
 		</ul>
 	</nav>
-
+</header>
 
 	<section class="main">
 
-	<div id="bin"></div>
+	<div id="bin">
+		<form id="form">
+	<label for="query">Search Yummly</label>
+	<input id="query" type="text"></input>
+	<input type="submit" value="search">
+	</form></div>
 
 	<!-- script to keep form submit from refreshing page
 		and navigate to the search route -->
