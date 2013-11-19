@@ -66,21 +66,17 @@
 	{{recipeName}}
 </script>
 
-<script id="user-recipe-form" type="text/template">
-	<form id="recipe-form">
-	<label for"recipeName">Recipe Name:</label>
-	<input type="text" id="recipeName" placeholder="recipe name"/>
-	<label for"ingredient_0">Ingredients:</label>
-	<input type="text" id="ingredient_0" placeholder="..."/> 
-	<button id="addLine" type="button">Add another line</button>
-	</form>
-</script>
 
+<div class="welcome">
+
+	<h1>Welcome to the Yummly App</h1>
+
+	<button class="login">Sign in with Dropbox!</button>
+
+</div>
 
 <section class="container" id="container">
 <section class="content" id="content">
-
-<section class="container">
 
 
 	<a href="#menu" class="menu-link">Menu</a>
@@ -102,7 +98,7 @@
 	<input id="query" type="text"></input>
 	</form>
 	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
-	<button class="login">auth</button>
+
 
 	<!-- script to keep form submit from refreshing page
 		and navigate to the search route -->
@@ -147,12 +143,15 @@
 		});
 	</script>
 
-	<script>
-    var nav = responsiveNav(".nav-collapse", {
-		  animate: true,
-		  transition: 400,
-		  label: "Menu"
-		});
+
+	<script id="user-recipe-form" type="text/template">
+		<form id="recipe-form">
+		<label for"recipeName">Recipe Name:</label>
+		<input type="text" id="recipeName" placeholder="recipe name"/>
+		<label for"ingredient_0">Ingredients:</label>
+		<input type="text" id="ingredient_0" placeholder="..."/>
+		<button id="addLine" type="button">Add another line</button>
+		</form>
 	</script>
 
 	</section> <!-- end main -->
