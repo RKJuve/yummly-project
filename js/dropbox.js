@@ -1,5 +1,5 @@
 var client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
-
+var recipeTable;
 
 $(document).ready(function() {
 
@@ -53,49 +53,35 @@ $(document).ready(function() {
 	recipeTable.insert(model.toJSON());
 	}
 
-	////////////////////
-	// INVENTORY ITEMS
-	////////////////////
+	if (client.isAuthenticated()) {
+		console.log('auth sucessful');
+		$(".login").hide();
+		$(".welcome").hide();
+		$("html").css("background-color", "#F3F3F3");
+		$(".container").show();
 
-	var inventoryTable;
+		var datastoreManager = client.getDatastoreManager();
+		datastoreManager.openDefaultDatastore(function (error, datastore) {
+		    if (error) {
+		        alert('Error opening default datastore: ' + error);
+		    }
 
-//	inventoryTable = datastore.getTable("inventoryItems");
+		    // Now you have a datastore. The next few examples can be included here.
+			recipeTable = datastore.getTable('recipe');
 
-	function insertInventoryItem(text) {
-		inventoryTable.insert({
-			itemName: text,
-			created: new Date(),
-			addedToShoppingList: false,
-			outOfItem: false
+
 		});
+		function recipeTableinsert(model){
+		recipeTable.insert(model.toJSON());
+		}
 	}
 
-	// function updateInventoryList() {
-	// 	$(".inventory").empty();
 
-	// 	//var records = inventoryTable.query();
+	client.getAccountInfo(function(error, accountInfo) {
+	  if (error) {
+	    return showError(error);  // Something went wrong.
+	  }
 
-	// 	// records.sort(function (taskA, taskB) {
-	// 	// 	if (taskA.get("created") < taskB.get("created")) return -1;
-	// 	// 	if (taskA.get("created") > taskB.get("created")) return 1;
-	// 	// 	return 0;
-	// 	// });
-
-	// 	// for (var i = 0; i < records.length; i++) {
-	// 	// 	var record = records[i];
-	// 	// 	$(".inventory-item").append(
-	// 	// 		renderInventoryItem(record.getId(),
-	// 	// 			record.get("outOfItem"),
-	// 	// 			record.get("itemName")));
-	// 	// }
-
-	// 	//addListeners();
-	// }
-
-	//updateInventoryList();
-
-	//datastore.recordsChanged.addListener(updateInventoryList);
-
-
-
+	  alert("Hello, " + accountInfo.name + "!");
+	});
 });
