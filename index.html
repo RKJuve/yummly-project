@@ -62,8 +62,20 @@
 </head>
 <body>
 
+<!-- Templates -->
+
 <script id="search-result-template" type="text/template">
 	{{recipeName}}
+</script>
+
+<script id="user-recipe-form" type="text/template">
+	<form id="recipe-form">
+	<label for"recipeName">Recipe Name:</label>
+	<input type="text" id="recipeName" placeholder="recipe name"/>
+	<label for"ingredient_0">Ingredients:</label>
+	<input type="text" id="ingredient_0" placeholder="..."/>
+	<button id="addLine" type="button">Add another line</button>
+	</form>
 </script>
 
 
@@ -141,17 +153,6 @@
 			e.preventDefault();
 			APP.router.navigate("favorites", {trigger: true});
 		});
-	</script>
-
-
-	<script id="user-recipe-form" type="text/template">
-		<form id="recipe-form">
-		<label for"recipeName">Recipe Name:</label>
-		<input type="text" id="recipeName" placeholder="recipe name"/>
-		<label for"ingredient_0">Ingredients:</label>
-		<input type="text" id="ingredient_0" placeholder="..."/>
-		<button id="addLine" type="button">Add another line</button>
-		</form>
 	</script>
 
 	</section> <!-- end main -->
