@@ -7,6 +7,10 @@ APP.SearchResultsView = Backbone.View.extend({
 			APP.searchResultView = new APP.SearchResultView({model:model});
 			this.$el.append(APP.searchResultView.el);
 		}, this);
+		$('#form').submit(function(e){
+			e.preventDefault;
+			APP.router.navigate("search", {trigger: true});
+		});
 	},
 
 });

@@ -1,3 +1,3 @@
-APP.UserRecipes = Backbone.Model.extend({
+APP.UserRecipes = Backbone.Collection.extend({
 	model: APP.UserRecipe
 });

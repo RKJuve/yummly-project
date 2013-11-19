@@ -66,33 +66,21 @@
 
 <!-- Templates -->
 
-<script id="search-bar" type="text/template">
-
-</script>
-
 <script id="search-result-template" type="text/template">
 	{{recipeName}}
 </script>
 
 <script id="user-recipe-form" type="text/template">
 	<form id="recipe-form">
-	<label for="recipeName">Recipe Name:</label>
+	<label for"recipeName">Recipe Name:</label>
 	<input type="text" id="recipeName" placeholder="recipe name"/>
-	<label for="ingredient_0">Ingredients:</label>
+	<label for"ingredient_0">Ingredients:</label>
 	<input type="text" id="ingredient_0" placeholder="..."/>
 	<button id="addLine" type="button">Add another line</button>
 	<button type="submit">Save</button>
 	</form>
 </script>
 
-<script id="inventory-list" type="text/template">
-	<form class="inventory-form">
-	<label for="inventory-item-name">Item Name</label>
-	<input type="text" id="inventory-item-name" name="inventory item name">
-	<label for="quantity">Quantity</label>
-	<input type="text" id="quantity" name="quantity">
-	</form>
-</script>
 
 <div class="welcome">
 
@@ -105,7 +93,6 @@
 <section class="container" id="container">
 <section class="content" id="content">
 
-	<header class="header">
 
 	<a href="#menu" class="menu-link">Menu</a>
 	<nav id="menu" role="navigation">
@@ -119,16 +106,13 @@
 		</ul>
 	</nav>
 
-	</header>
-
 
 	<section class="main">
 
 	<form id="form">
-	<label for="query">Search Yummly</label>
 	<input id="query" type="text"></input>
 	</form>
-	<div id="bin"></div>
+	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
 
 
 	<!-- script to keep form submit from refreshing page
@@ -150,7 +134,7 @@
 	<script>
 		$("a.home").click(function(e) {
 			e.preventDefault();
-			APP.router.navigate("home", {trigger: true});
+			APP.router.navigate("/", {trigger: true});
 		});
 		$("a.search").click(function(e) {
 			e.preventDefault();

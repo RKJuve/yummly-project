@@ -10,11 +10,14 @@ APP.Router = Backbone.Router.extend({
 		"search/:recipe_id": "details",
 		"favorite": "favorite",
 		"favorites": "favorites",
-		"addRecipe": "addRecipe"
+		"addRecipe": "addRecipe",
+		"userRecipes": "userRecipes"
+	},
+	userRecipes: function () {
+		APP.userRecipesView = new APP.UserRecipesView();	
 	},
 	addRecipe: function(){
 		APP.addRecipeView = new APP.AddRecipeView();
-		console.log("add recipe hit");
 	},
 	details: function(recipie_id){
 		APP.recipieDetails = new APP.RecipieDetails({id: recipie_id});
