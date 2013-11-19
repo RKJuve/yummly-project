@@ -45,6 +45,10 @@ APP.Router = Backbone.Router.extend({
 				}
 				APP.searchResultsView = new APP.SearchResultsView({collection: APP.searchResults});
 				APP.searchResultsView.render();
+				$('#form').submit(function(){
+					APP.router.navigate("search", {trigger: true});
+					return false;
+				});
 			}
 		});
 	},
