@@ -1,5 +1,39 @@
 html {
 	background-color: #F3F3F3;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.welcome {
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 5em;
+  font-size: 2em;
+}
+
+.login {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0.5em;
+  background-color: #F3F3F3;
+  color: #000;
+  border: 0;
+  width: 500px;
+  font-size: 1em;
+  border: 1px solid #DADADA;
+  border-bottom: 10px solid #DADADA;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(#F3F3F3, 10%);
+    border: 1px solid darken(#DADADA, 10%);
+    border-bottom: 10px solid darken(#DADADA, 10%);
+  }
 }
 
 .container {
@@ -24,6 +58,8 @@ html {
 .main {
 	padding: 2em;
 }
+
+
 
 
 
