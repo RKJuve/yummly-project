@@ -68,7 +68,11 @@
 
 <script id="user-recipe-form" type="text/template">
 	<form id="recipe-form">
-	<input type="text" placeholder="recipe title"/>
+	<label for"recipeName">Recipe Name:</label>
+	<input type="text" id="recipeName" placeholder="recipe name"/>
+	<label for"ingredient_0">Ingredients:</label>
+	<input type="text" id="ingredient_0" placeholder="..."/> 
+	<button id="addLine" type="button">Add another line</button>
 	</form>
 </script>
 
@@ -100,15 +104,20 @@
 	<div id="bin">Type search string in box above and hit enter to search yummly recipie api</div>
 	<button class="login">auth</button>
 
-	<!-- script to keep form submit from refreshing page -->
+	<!-- script to keep form submit from refreshing page
+		and navigate to the search route -->
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
-	});
+		$(".login").click(function(e) {
+			e.preventDefault();
+			client.authenticate();
+		});
 
+	});
 	</script>
 
 	<script>

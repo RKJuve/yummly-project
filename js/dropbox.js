@@ -44,4 +44,3 @@ recipeTable.insert(model.toJSON());
   console.log('auth sucessful');
   $(".login").hide();
   $(".content").show();
-}

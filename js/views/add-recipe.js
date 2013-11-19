@@ -14,5 +14,8 @@ APP.AddRecipeView = Backbone.View.extend({
 		var source = $("#user-recipe-form").html();
 		template = Handlebars.compile(source); 
 		this.$el.html(template);
+		$('#addLine').on("click", function(){
+			$('#addLine').before('<input type="text" id="ingredient_1" placeholder="..."/>');
+		});
 	}
 });

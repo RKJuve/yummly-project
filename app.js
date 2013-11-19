@@ -2,8 +2,7 @@
 
 var path = require("path"),
 		express = require("express"),
-		_ = require("underscore"),
-		Dropbox = require("dropbox");
+		_ = require("underscore");
 
 //set up the express app
 var app = express()
