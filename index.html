@@ -51,7 +51,6 @@
 	<script	src="views/day-of-week.js"></script>
 	<script	src="views/favorite.js"></script>
 	<script	src="views/favorites.js"></script>
-	<script	src="views/search.js"></script>
 
 	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
@@ -68,10 +67,7 @@
 <!-- Templates -->
 
 <script id="search-bar" type="text/template">
-	<form id="form">
-	<label for="query">Search Yummly</label>
-	<input id="query" type="text"></input>
-	</form>
+
 </script>
 
 <script id="search-result-template" type="text/template">
@@ -109,6 +105,7 @@
 <section class="container" id="container">
 <section class="content" id="content">
 
+	<header class="header">
 
 	<a href="#menu" class="menu-link">Menu</a>
 	<nav id="menu" role="navigation">
@@ -122,9 +119,15 @@
 		</ul>
 	</nav>
 
+	</header>
+
 
 	<section class="main">
 
+	<form id="form">
+	<label for="query">Search Yummly</label>
+	<input id="query" type="text"></input>
+	</form>
 	<div id="bin"></div>
 
 

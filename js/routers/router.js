@@ -1,7 +1,6 @@
 APP.Router = Backbone.Router.extend({
 
 	routes: {
-		"home": "home",
 		"inventory": "inventory",
 		"inventory-item": "inventoryItem",
 		"shopping-list": "shoppingList",
@@ -59,12 +58,12 @@ APP.Router = Backbone.Router.extend({
     APP.inventory = new APP.Inventory();
     APP.inventory.fetch({
       success: function() {
-        APP.inventoryItem1 = APP.inventory.get(1);
-        APP.inventoryItemView1 = new APP.InventoryItemView({
-          model: APP.inventoryItem1
-        });
-        APP.inventoryItemView1.render();
-        $("body").append(APP.inventoryItemView1.$el);
+        // APP.inventoryItem1 = APP.inventory.get(1);
+        // APP.inventoryItemView1 = new APP.InventoryItemView({
+          // model: APP.inventoryItem1
+        // });
+        // APP.inventoryItemView1.render();
+        // $("body").append(APP.inventoryItemView1.$el);
       }
     });
   },
@@ -87,12 +86,12 @@ APP.Router = Backbone.Router.extend({
 		APP.shopping = new APP.ShoppingList();
 		APP.shopping.fetch({
 			success: function() {
-				APP.shoppingListItem1 = APP.shopping.get(1);
-				APP.shoppingListItemView = new APP.ShoppingListItemView({
-					model: APP.shoppingListItem1
-				});
-				APP.shoppingListItemView.render();
-        $("body").append(APP.shoppingListItemView.$el);
+				// APP.shoppingListItem1 = APP.shopping.get(1);
+				// APP.shoppingListItemView = new APP.ShoppingListItemView({
+					// model: APP.shoppingListItem1
+				// });
+				// APP.shoppingListItemView.render();
+        // $("body").append(APP.shoppingListItemView.$el);
 			}
 		});
 	},
@@ -127,13 +126,13 @@ APP.Router = Backbone.Router.extend({
 		APP.favorites = new APP.Favorites();
 		APP.favorites.fetch({
 			success: function() {
-				APP.favoriteRecipe1 = APP.favorites.get(1);
-				APP.favoriteView = new APP.FavoriteView({
-					model: APP.favoriteRecipe1
-				});
-				APP.favoriteView.render();
-				$("body").append(APP.favoriteView.$el);
-				console.log(APP.favoriteRecipe1);
+				// APP.favoriteRecipe1 = APP.favorites.get(1);
+				// APP.favoriteView = new APP.FavoriteView({
+					// model: APP.favoriteRecipe1
+				// });
+				// APP.favoriteView.render();
+				// $("body").append(APP.favoriteView.$el);
+				// console.log(APP.favoriteRecipe1);
 			}
 		});
 	},
@@ -148,10 +147,6 @@ APP.Router = Backbone.Router.extend({
 				APP.favoritesView.render();
 			}
 		});
-	},
-
-	home: function() {
-		APP.searchView = new APP.SearchView();
 	}
 
 

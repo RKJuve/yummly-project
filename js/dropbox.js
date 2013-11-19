@@ -26,16 +26,6 @@ $(document).ready(function() {
 		  $(".container").show();
 		}
 
-
-
-	client.getAccountInfo(function(error, accountInfo) {
-	  if (error) {
-	    return showError(error);  // Something went wrong.
-	  }
-
-	 // alert("Hello, " + accountInfo.name + "!");
-	});
-
 	var recipeTable;
 
 	var datastoreManager = client.getDatastoreManager();
@@ -82,6 +72,6 @@ $(document).ready(function() {
 	    return showError(error);  // Something went wrong.
 	  }
 
-	  alert("Hello, " + accountInfo.name + "!");
+	  //alert("Hello, " + accountInfo.name + "!");
 	});
 });
