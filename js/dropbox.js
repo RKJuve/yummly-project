@@ -1,5 +1,5 @@
 var client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
-
+var recipeTable;
 
 $(document).ready(function() {
 
@@ -19,39 +19,38 @@ $(document).ready(function() {
 	});
 
 	if (client.isAuthenticated()) {
-	  console.log('auth sucessful');
-	  $(".login").hide();
-	  $(".welcome").hide();
-	  $("html").css("background-color", "#F3F3F3");
-	  $(".container").show();
+		console.log('auth sucessful');
+		$(".login").hide();
+		$(".welcome").hide();
+		$("html").css("background-color", "#F3F3F3");
+		$(".container").show();
+
+		var datastoreManager = client.getDatastoreManager();
+		datastoreManager.openDefaultDatastore(function (error, datastore) {
+		    if (error) {
+		        alert('Error opening default datastore: ' + error);
+		    }
+
+		    // Now you have a datastore. The next few examples can be included here.
+			recipeTable = datastore.getTable('recipe');
+
+
+		});
+		function recipeTableinsert(model){
+		recipeTable.insert(model.toJSON());
+		}
+
+		$(".login").hide();
+		$(".content").show();
 	}
 
-});
 
-client.getAccountInfo(function(error, accountInfo) {
-  if (error) {
-    return showError(error);  // Something went wrong.
-  }
+	client.getAccountInfo(function(error, accountInfo) {
+	  if (error) {
+	    return showError(error);  // Something went wrong.
+	  }
 
-  alert("Hello, " + accountInfo.name + "!");
-});
-
-var recipeTable;
-
-var datastoreManager = client.getDatastoreManager();
-datastoreManager.openDefaultDatastore(function (error, datastore) {
-    if (error) {
-        alert('Error opening default datastore: ' + error);
-    }
-
-    // Now you have a datastore. The next few examples can be included here.
-	recipeTable = datastore.getTable('recipe');
-
+	  alert("Hello, " + accountInfo.name + "!");
+	});
 
 });
-function recipeTableinsert(model){
-recipeTable.insert(model.toJSON());
-}
-  console.log('auth sucessful');
-  $(".login").hide();
-  $(".content").show();
