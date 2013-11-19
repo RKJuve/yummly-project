@@ -7,6 +7,9 @@ function DBXtoBB(){
 	APP.recipeTable.query().forEach(function(val, index, array){
 		APP.userRecipes.add(new APP.UserRecipe(val.getFields()));
 	})
+	APP.userRecipes.on("add", function(model, collection, options){
+		APP.recipeTable.getOrInsert(model.cid, model.toJSON());
+	});
 }
 
 $(document).ready(function() {
@@ -43,7 +46,7 @@ $(document).ready(function() {
 
 	    // Now you have a datastore. The next few examples can be included here.
 		APP.recipeTable = datastore.getTable('recipe');
-		inventoryTable = datastore.getTable('inventoryItem');
+		DBXtoBB();
 	});
 
 
@@ -51,7 +54,7 @@ $(document).ready(function() {
 		APP.recipeTable.insert(model.toJSON());
 	};
 	function inventoryTableInsert(model) {
-		inventoryTable.insert(model.toJSON());
+		APP.inventoryTable.insert(model.toJSON());
 	};
 
 	APP.client.getAccountInfo(function(error, accountInfo) {
