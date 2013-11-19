@@ -155,7 +155,6 @@ APP.Router = Backbone.Router.extend({
 
 	home: function() {
 		APP.homeView = new APP.HomeView();
-		APP.homeView.render();
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;

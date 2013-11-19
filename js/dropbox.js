@@ -1,6 +1,6 @@
-var client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
-var recipeTable;
-var inventoryTable;
+APP.client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
+APP.recipeTable;
+APP.inventoryTable;
 
 $(document).ready(function() {
 
@@ -9,17 +9,17 @@ $(document).ready(function() {
 
 		$(".login").click(function(e) {
 			e.preventDefault();
-			client.authenticate();
-		});
+			APP.client.authenticate();
+		});1
 
 		// Try to finish OAuth authorization.
-		client.authenticate({interactive: false}, function (error) {
+		APP.client.authenticate({interactive: false}, function (error) {
 		  if (error) {
 		    alert('Authentication error: ' + error);
 		  }
 		});
 
-		if (client.isAuthenticated()) {
+		if (APP.client.isAuthenticated()) {
 		  console.log('auth sucessful');
 		  $(".login").hide();
 		  $(".welcome").hide();
@@ -27,20 +27,20 @@ $(document).ready(function() {
 		  $(".container").show();
 		}
 
-	var datastoreManager = client.getDatastoreManager();
+	var datastoreManager = APP.client.getDatastoreManager();
 	datastoreManager.openDefaultDatastore(function (error, datastore) {
 	    if (error) {
 	        alert('Error opening default datastore: ' + error);
 	    }
 
 	    // Now you have a datastore. The next few examples can be included here.
-		recipeTable = datastore.getTable('recipe');
+		APP.recipeTable = datastore.getTable('recipe');
 		inventoryTable = datastore.getTable('inventoryItem');
 	});
 
 
 	function recipeTableinsert(model){
-		recipeTable.insert(model.toJSON());
+		APP.recipeTable.insert(model.toJSON());
 	};
 	function inventoryTableInsert(model) {
 		inventoryTable.insert(model.toJSON());

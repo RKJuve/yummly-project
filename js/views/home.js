@@ -7,8 +7,9 @@ APP.HomeView = Backbone.View.extend({
 	},
 
 	render: function() {
-		var homeTemplate = $("#search-bar").html(),
-				template = Handlebars.compile(homeTemplate);
-		this.$el.html(template);
+		var homeTemplate = $("#search-bar").html();
+		console.log(homeTemplate);
+		var template = Handlebars.compile(homeTemplate);
+		$("#bin").html("<h2>test</h2>");
 	}
 });
