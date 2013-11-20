@@ -1,4 +1,4 @@
-APP.InventoryList = Backbone.View.extend({
+APP.InventoryListView = Backbone.View.extend({
 
 	el: "#inventory",
 
@@ -12,9 +12,9 @@ APP.InventoryList = Backbone.View.extend({
 			quantity: document.forms["inventory-form"]["quantity"].value
 		};
 		if (!APP.inventoryItem) {
-			APP.inventoryItem = new APP.InventoryItem();
+			APP.inventory = new APP.Inventory();
 		}
-		APP.inventoryItem.add(new APP.InventoryItem(input));
+		APP.inventory.add(new APP.Inventory(input));
 	},
 
 	render: function() {
@@ -26,20 +26,19 @@ APP.InventoryList = Backbone.View.extend({
 		this.$el.before(inventoryTemplate);
 		console.log(this.$el);
 
-		this.collection.each(function(model) {
-			APP.inventoryItemView = new APP.InventoryItemView({model: model});
-			this.$el.append(APP.inventoryItemView.render().el);
-
 		$("form").on("submit", function(event) {
 			event.preventDefault();
 			that.addToInventory();
 			console.log("done");
 		});
 
+		this.collection.each(function(model) {
+			APP.inventoryItemView = new APP.InventoryItemView({model: model});
+			this.$el.append(APP.inventoryItemView.el);
+
 		}, this);
 
 		return this;
-
 
 	}
 

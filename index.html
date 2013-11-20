@@ -133,6 +133,8 @@
 <section class="content" id="content">
 
 <header class="header">
+
+
 	<a href="#menu" class="menu-link">Menu</a>
 	<h2>test</h2>
 	<nav id="menu" role="navigation">
@@ -144,10 +146,12 @@
 			<li><a href="#" class="shopping">Shopping List</a></li>
 			<li><a href="#" class="favorites">Favorites</a></li>
 			<li><a href="javascript:APP.router.navigate('addRecipe', {trigger: true});" class="addRecipe">Add Recipe</a></li>
-            <li><a href="javascript:APP.router.navigate('userRecipes', {trigger: true});" class="userRecipes">User Recipes</a></li>
+      <li><a href="javascript:APP.router.navigate('userRecipes', {trigger: true});" class="userRecipes">User Recipes</a></li>
 
 		</ul>
 	</nav>
+
+	<h2>Title</h2>
 </header>
 
 	<section class="main">
@@ -167,17 +171,11 @@
 	<!-- script to keep form submit from refreshing page
 		and navigate to the search route -->
 	<script type="text/javascript">
-	$(document).ready(function(){
-		$('#form').submit(function(){
-			APP.router.navigate("search", {trigger: true});
-			return false;
-		});
-		$(".login").click(function(e) {
-			e.preventDefault();
-			client.authenticate();
-		});
-
-	});
+	// $(document).ready(function(){
+	// 	$('#form').submit(function(){
+	// 		APP.router.navigate("search", {trigger: true});
+	// 		return false;
+	// 	});
 	</script>
 
 	<script>
