@@ -8,7 +8,6 @@ APP.RecipieDetailsView = Backbone.View.extend({
 		this.$el.html(this.model.get("ingredientLines")+"<br><br><button id='saveToList'>save to list</button>");
 	},
 	saveToList: function(){
-		console.log('view button clicked');
 		this.model.saveToList();
 	}
 });

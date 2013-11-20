@@ -1,7 +1,6 @@
 // collection view
 APP.UserRecipesView = Backbone.View.extend({
 	el: "#bin",
-	tagName: "ul",
 	initialize: function() {
 		this.render();
 	},
@@ -10,6 +9,7 @@ APP.UserRecipesView = Backbone.View.extend({
 			APP.userRecipeView = new APP.UserRecipeView({model:model});
 			this.$el.append(APP.userRecipeView.el);
 		}, this);
+		this.$el.wrapInner("<ul  />")
 	}
 });
 
