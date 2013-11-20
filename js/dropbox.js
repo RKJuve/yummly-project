@@ -19,6 +19,15 @@ function DBXtoBB(){
 		APP.userRecipes.add(new APP.UserRecipe(temp));
 	})
 
+	//syncing user inventory
+	APP.inventory = new APP.Inventory;
+	APP.inventoryTable.query().forEach(function(val, index, array){
+		APP.globalCID = val._rid;
+		var temp = val.getFields();
+		APP.inventory.add(new APP.InventoryItem(temp));
+	})
+
+
 
 
 	// user recipes event listeners
@@ -32,6 +41,18 @@ function DBXtoBB(){
 		APP.userRecipeTable.get(model.cid).update(model.changed);
 	});
 
+	// user inventory event listeners
+	APP.inventory.on("add", function(model, collection, options){
+		console.log("add event for inventory");
+		console.log(model);
+		APP.inventoryTable.getOrInsert(model.cid, model.toJSON());
+	});
+	APP.inventory.on("remove", function(model, collection, options){
+		APP.inventoryTable.get(model.cid).deleteRecord();
+	});
+	APP.inventory.on("change", function(model, options){
+		APP.inventoryTable.get(model.cid).update(model.changed);
+	});
 
 	// sync done
 	APP.DBXsync = true;
@@ -71,6 +92,7 @@ $(document).ready(function() {
 
 	    // Now you have a datastore. The next few examples can be included here.
 		APP.userRecipeTable = datastore.getTable('userRecipe');
+		APP.inventoryTable = datastore.getTable('inventory');
 		DBXtoBB();
 	});
 
