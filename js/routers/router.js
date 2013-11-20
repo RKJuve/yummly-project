@@ -15,7 +15,7 @@ APP.Router = Backbone.Router.extend({
 		"home": "home"
 	},
 	userRecipes: function () {
-		APP.userRecipesView = new APP.UserRecipesView();	
+		APP.userRecipesView = new APP.UserRecipesView({collection: APP.userRecipes});	
 	},
 	addRecipe: function(){
 		APP.addRecipeView = new APP.AddRecipeView();
