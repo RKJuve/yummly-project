@@ -5,10 +5,22 @@ APP.inventoryTable;
 function DBXtoBB(){
 	APP.userRecipes = new APP.UserRecipes;
 	APP.recipeTable.query().forEach(function(val, index, array){
-		APP.userRecipes.add(new APP.UserRecipe(val.getFields()));
+		var temp = val.getFields();
+		for (key in temp) {
+			if (key === "ingredients") {
+				temp[key] = temp[key]._array();
+			}
+		}
+		APP.userRecipes.add(new APP.UserRecipe(temp));
 	})
 	APP.userRecipes.on("add", function(model, collection, options){
 		APP.recipeTable.getOrInsert(model.cid, model.toJSON());
+	});
+	APP.userRecipes.on("remove", function(model, collection, options){
+		APP.recipeTable.get(model.cid).deleteRecord();
+	});
+	APP.userRecipes.on("change", function(model, options){
+		APP.recipeTable.get(model.cid).update(model.changed);
 	});
 }
 
