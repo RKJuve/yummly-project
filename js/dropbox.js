@@ -1,6 +1,7 @@
 APP.client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
 APP.userRecipeTable;
 APP.inventoryTable;
+APP.favoritesTable;
 APP.DBXsync = false;
 
 function DBXtoBB(){
@@ -27,6 +28,13 @@ function DBXtoBB(){
 		APP.inventory.add(new APP.InventoryItem(temp));
 	})
 
+	//syncing user favorites
+	APP.favorites = new APP.Favorites;
+	APP.favoritesTable.query().forEach(function(val, index, array){
+		APP.globalCID = val._rid;
+		var temp = val.getFields();
+		APP.favorites.add(new APP.Favorite(temp));
+	})
 
 
 
@@ -43,8 +51,6 @@ function DBXtoBB(){
 
 	// user inventory event listeners
 	APP.inventory.on("add", function(model, collection, options){
-		console.log("add event for inventory");
-		console.log(model);
 		APP.inventoryTable.getOrInsert(model.cid, model.toJSON());
 	});
 	APP.inventory.on("remove", function(model, collection, options){
@@ -52,6 +58,17 @@ function DBXtoBB(){
 	});
 	APP.inventory.on("change", function(model, options){
 		APP.inventoryTable.get(model.cid).update(model.changed);
+	});
+
+	// user favorites event listeners
+	APP.favorites.on("add", function(model, collection, options){
+		APP.favoritesTable.getOrInsert(model.cid, model.toJSON());
+	});
+	APP.favorites.on("remove", function(model, collection, options){
+		APP.favoritesTable.get(model.cid).deleteRecord();
+	});
+	APP.favorites.on("change", function(model, options){
+		APP.favoritesTable.get(model.cid).update(model.changed);
 	});
 
 	// sync done
@@ -90,9 +107,10 @@ $(document).ready(function() {
 	        alert('Error opening default datastore: ' + error);
 	    }
 
-	    // Now you have a datastore. The next few examples can be included here.
+	    //assign APP scoped variables to the datastores
 		APP.userRecipeTable = datastore.getTable('userRecipe');
 		APP.inventoryTable = datastore.getTable('inventory');
+		APP.favoritesTable = datastore.getTable('favorites');
 		DBXtoBB();
 	});
 

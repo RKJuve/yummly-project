@@ -65,94 +65,74 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	inventoryItem: function() {
-    APP.inventory = new APP.Inventory();
-    APP.inventory.fetch({
-      success: function() {
-        APP.inventoryItem1 = APP.inventory.get(1);
-        APP.inventoryItemView1 = new APP.InventoryItemView({
-          model: APP.inventoryItem1
-        });
-        APP.inventoryItemView1.render();
-        $("body").append(APP.inventoryItemView1.$el);
-      }
-    });
-  },
+	inventoryItem: function() {  
+	},
 
 	inventory: function() {
-		APP.inventory = new APP.Inventory();
-		APP.inventory.fetch({
-			success: function() {
-				var inventoryListView = new APP.InventoryList({
-					collection: APP.inventory
-				});
-				inventoryListView.render();
-			}
-		});
 	},
 
 	shoppingListItem: function() {
-		APP.shopping = new APP.ShoppingList();
-		APP.shopping.fetch({
-			success: function() {
-				APP.shoppingListItem1 = APP.shopping.get(1);
-				APP.shoppingListItemView = new APP.ShoppingListItemView({
-					model: APP.shoppingListItem1
-				});
-				APP.shoppingListItemView.render();
-        $("body").append(APP.shoppingListItemView.$el);
-			}
-		});
+		// APP.shopping = new APP.ShoppingList();
+		// APP.shopping.fetch({
+		// 	success: function() {
+		// 		APP.shoppingListItem1 = APP.shopping.get(1);
+		// 		APP.shoppingListItemView = new APP.ShoppingListItemView({
+		// 			model: APP.shoppingListItem1
+		// 		});
+		// 		APP.shoppingListItemView.render();
+  //       $("body").append(APP.shoppingListItemView.$el);
+		// 	}
+		// });
 	},
 
 	shoppingList: function() {
-		APP.shoppingList = new APP.ShoppingList();
-		APP.shoppingList.fetch({
-			success: function() {
-				var shoppingListView = new APP.ShoppingListView({
-					collection: APP.shoppingList
-				});
-				shoppingListView.render();
-			}
-		});
+		// APP.shoppingList = new APP.ShoppingList();
+		// APP.shoppingList.fetch({
+		// 	success: function() {
+		// 		var shoppingListView = new APP.ShoppingListView({
+		// 			collection: APP.shoppingList
+		// 		});
+		// 		shoppingListView.render();
+		// 	}
+		// });
 	},
 
 	weeklyScheduleRoute: function() {
-		APP.weeklySchedule = new APP.WeeklySchedule();
-		APP.weeklySchedule.fetch({
-			success: function() {
-				var weeklyScheduleView = new APP.WeeklyScheduleView({
-					collection: APP.weeklySchedule
-				});
-				weeklyScheduleView.render();
-			}
-		});
+		// APP.weeklySchedule = new APP.WeeklySchedule();
+		// APP.weeklySchedule.fetch({
+		// 	success: function() {
+		// 		var weeklyScheduleView = new APP.WeeklyScheduleView({
+		// 			collection: APP.weeklySchedule
+		// 		});
+		// 		weeklyScheduleView.render();
+		// 	}
+		// });
 	},
 
 	favorite: function() {
-		APP.favorites = new APP.Favorites();
-		APP.favorites.fetch({
-			success: function() {
-				APP.favoriteRecipe1 = APP.favorites.get(1);
-				APP.favoriteView = new APP.FavoriteView({
-					model: APP.favoriteRecipe1
-				});
-				APP.favoriteView.render();
-				$("body").append(APP.favoriteView.$el);
-			}
-		});
+		// APP.favorites = new APP.Favorites();
+		// APP.favorites.fetch({
+		// 	success: function() {
+		// 		APP.favoriteRecipe1 = APP.favorites.get(1);
+		// 		APP.favoriteView = new APP.FavoriteView({
+		// 			model: APP.favoriteRecipe1
+		// 		});
+		// 		APP.favoriteView.render();
+		// 		$("body").append(APP.favoriteView.$el);
+		// 	}
+		// });
 	},
 
 	favorites: function() {
-		APP.favorites = new APP.Favorites();
-		APP.favorites.fetch({
-			success: function() {
-				APP.favoritesView = new APP.FavoritesView({
-					collection: APP.favorites
-				});
-				APP.favoritesView.render();
-			}
-		});
+		// APP.favorites = new APP.Favorites();
+		// APP.favorites.fetch({
+		// 	success: function() {
+		// 		APP.favoritesView = new APP.FavoritesView({
+		// 			collection: APP.favorites
+		// 		});
+		// 		APP.favoritesView.render();
+		// 	}
+		// });
 	},
 
 	home: function() {
