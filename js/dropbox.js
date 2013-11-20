@@ -21,7 +21,8 @@ function DBXtoBB(){
 	})
 
 	//syncing user inventory
-	APP.inventory = new APP.Inventory;
+	APP.inventory = new APP.Inventory();
+	console.log("dasfd")
 	APP.inventoryTable.query().forEach(function(val, index, array){
 		APP.globalCID = val._rid;
 		var temp = val.getFields();
@@ -106,7 +107,7 @@ $(document).ready(function() {
 	    if (error) {
 	        alert('Error opening default datastore: ' + error);
 	    }
-
+	    	console.log("getDatastoreManager");
 	    //assign APP scoped variables to the datastores
 		APP.userRecipeTable = datastore.getTable('userRecipe');
 		APP.inventoryTable = datastore.getTable('inventory');

@@ -24,7 +24,6 @@ APP.InventoryListView = Backbone.View.extend({
 		var inventoryTemplate = $("#inventory-list").html();
 		inventoryTemplate = Handlebars.compile(inventoryTemplate);
 		this.$el.before(inventoryTemplate);
-		console.log(this.$el);
 
 		$("form").on("submit", function(event) {
 			event.preventDefault();
@@ -35,6 +34,7 @@ APP.InventoryListView = Backbone.View.extend({
 		this.collection.each(function(model) {
 			APP.inventoryItemView = new APP.InventoryItemView({model: model});
 			this.$el.append(APP.inventoryItemView.el);
+
 		}, this);
 
 		return this;
