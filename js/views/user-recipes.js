@@ -8,7 +8,7 @@ APP.UserRecipesView = Backbone.View.extend({
 	render: function() {
 		this.collection.each(function(model){
 			APP.userRecipeView = new APP.UserRecipeView({model:model});
-			this.$el.append(APP.userRecipeView.el);
+			this.$el.html(APP.userRecipeView.el);
 		}, this);
 	}
 });
