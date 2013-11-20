@@ -17,7 +17,7 @@ APP.Router = Backbone.Router.extend({
 	},
 	userRecipeDetails: function(recipe_id) {
 		$('#bin').empty();
-		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)}) 
+		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)})
 	},
 	userRecipes: function () {
 		$('#bin').empty();
@@ -65,41 +65,25 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	inventoryItem: function() {  
+	inventoryItem: function() {
 	},
 
 	inventory: function() {
-        $('#bin').empty();
-        $("inventory").empty();
-        var inventoryListView = new APP.InventoryListView({
-                collection: APP.inventory
-        });
-    },
+		$('#bin').empty();
+		$("inventory").empty();
+		var inventoryListView = new APP.InventoryListView({
+			collection: APP.inventory
+		});
+	},
 
 	shoppingListItem: function() {
-		// APP.shopping = new APP.ShoppingList();
-		// APP.shopping.fetch({
-		// 	success: function() {
-		// 		APP.shoppingListItem1 = APP.shopping.get(1);
-		// 		APP.shoppingListItemView = new APP.ShoppingListItemView({
-		// 			model: APP.shoppingListItem1
-		// 		});
-		// 		APP.shoppingListItemView.render();
-  //       $("body").append(APP.shoppingListItemView.$el);
-		// 	}
-		// });
 	},
 
 	shoppingList: function() {
-		// APP.shoppingList = new APP.ShoppingList();
-		// APP.shoppingList.fetch({
-		// 	success: function() {
-		// 		var shoppingListView = new APP.ShoppingListView({
-		// 			collection: APP.shoppingList
-		// 		});
-		// 		shoppingListView.render();
-		// 	}
-		// });
+		$('#bin').empty();
+		var shoppingListView = new APP.ShoppingListView({
+			collection: APP.shoppingList
+		});
 	},
 
 	weeklyScheduleRoute: function() {
@@ -141,7 +125,8 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	home: function() {
-		console.log("home route hit");
+		$('#bin').empty();
+		$("inventory").empty();
 		APP.homeView = new APP.HomeView();
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});

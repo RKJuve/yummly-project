@@ -1,15 +1,15 @@
 APP.ShoppingListItemView = Backbone.View.extend({
 
-	tagName: "li",
-	className: "list-item",
+	el: "#shopping",
 
-	template: Handlebars.compile("<a>{{name}}</a>"),
+	initialize: function() {
+		this.render();
+	},
 
 	render: function() {
-
-		this.$el.html(this.template(this.model.toJSON()));
-		return this;
-
+		var template = Handlebars.compile($("#shopping-list-item").html());
+		this.$el.html(template(this.model.toJSON()));
+		console.log("rendered");
 	}
 
 });
