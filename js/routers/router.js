@@ -12,9 +12,15 @@ APP.Router = Backbone.Router.extend({
 		"favorites": "favorites",
 		"addRecipe": "addRecipe",
 		"userRecipes": "userRecipes",
+		"userRecipes/:recipe_id": "userRecipeDetails",
 		"home": "home"
 	},
+	userRecipeDetails: function(recipe_id) {
+		$('#bin').empty();
+		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)}) 
+	},
 	userRecipes: function () {
+		$('#bin').empty();
 		APP.userRecipesView = new APP.UserRecipesView({collection: APP.userRecipes});
 	},
 	addRecipe: function(){

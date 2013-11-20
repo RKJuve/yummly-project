@@ -52,6 +52,7 @@
 	<script	src="views/favorites.js"></script>
 	<script	src="views/home.js"></script>
 	<script	src="views/user-recipes.js"></script>
+	<script	src="views/user-recipe-details.js"></script>
 
 	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
@@ -66,9 +67,17 @@
 <body>
 
 <!-- Templates -->
+<script id="user-recipe-details-template" type="text/template">
+	<h2>{{name}}</h2>
+	<ul>
+	{{#each ingredients}}
+		<li>{{this}}</li>
+	{{/each}}
+	</ul>
+</script>
 
 <script id="user-recipe-template" type="text/template">
-	{{name}}{{ingredients}}
+	<h3>{{name}}</h3>
 </script>
 
 <script id="search-bar" type="text/template">

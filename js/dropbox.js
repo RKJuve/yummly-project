@@ -4,6 +4,9 @@ APP.inventoryTable;
 APP.DBXsync = false;
 
 function DBXtoBB(){
+
+
+	//syncing user recipes
 	APP.userRecipes = new APP.UserRecipes;
 	APP.userRecipeTable.query().forEach(function(val, index, array){
 		APP.globalCID = val._rid;
@@ -16,6 +19,9 @@ function DBXtoBB(){
 		APP.userRecipes.add(new APP.UserRecipe(temp));
 	})
 
+
+
+	// user recipes event listeners
 	APP.userRecipes.on("add", function(model, collection, options){
 		APP.userRecipeTable.getOrInsert(model.cid, model.toJSON());
 	});
@@ -26,6 +32,8 @@ function DBXtoBB(){
 		APP.userRecipeTable.get(model.cid).update(model.changed);
 	});
 
+
+	// sync done
 	APP.DBXsync = true;
 }
 
