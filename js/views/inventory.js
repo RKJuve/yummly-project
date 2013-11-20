@@ -35,7 +35,6 @@ APP.InventoryListView = Backbone.View.extend({
 		this.collection.each(function(model) {
 			APP.inventoryItemView = new APP.InventoryItemView({model: model});
 			this.$el.append(APP.inventoryItemView.el);
-
 		}, this);
 
 		return this;
