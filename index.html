@@ -53,6 +53,7 @@
 	<script	src="views/home.js"></script>
 	<script	src="views/user-recipes.js"></script>
 	<script	src="views/user-recipe-details.js"></script>
+	<script src="views/user-recipe-edit.js"></script>
 
 	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
@@ -77,6 +78,19 @@
 	</ul>
 </script>
 
+<script id="user-recipe-edit-template" type="text/template">
+	<form id="recipe-form">
+	<label for"recipeName">Recipe Name:</label>
+	<input type="text" id="recipeName" value="{{name}}"/>
+	<label for"ingredient_0">Ingredients:</label>
+	{{#each ingredients}}
+	<input type="text" id="ingredient_{{@index}}" value="{{this}}"/>
+	{{/each}}
+	<button id="addLine" type="button">Add another line</button>
+	<button id="save" type="button">Save</button>
+	</form>
+</script>
+
 <script id="user-recipe-template" type="text/template">
 	<h3>{{name}}</h3>
 </script>
@@ -97,7 +111,7 @@
 	<label for"recipeName">Recipe Name:</label>
 	<input type="text" id="recipeName" placeholder="recipe name"/>
 	<label for"ingredient_1">Ingredients:</label>
-	<input type="text" id="ingredient_1" placeholder="..."/>
+	<input type="text" id="ingredient_0" placeholder="..."/>
 	<button id="addLine" type="button">Add another line</button>
 	<button id="save" type="button">Save</button>
 	</form>

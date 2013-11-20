@@ -21,7 +21,6 @@ APP.UserRecipeView = Backbone.View.extend({
 	},
 	viewDetails: function() {
 		var navTarget = "userRecipes/"+this.model.cid;
-		console.log(navTarget);
 		APP.router.navigate(navTarget, {trigger: true});
 	},
 	initialize: function() {

@@ -8,7 +8,7 @@ function DBXtoBB(){
 
 
 	//syncing user recipes
-	APP.userRecipes = new APP.UserRecipes;
+	APP.userRecipes = new APP.UserRecipes();
 	APP.userRecipeTable.query().forEach(function(val, index, array){
 		APP.globalCID = val._rid;
 		var temp = val.getFields();
@@ -21,7 +21,7 @@ function DBXtoBB(){
 	})
 
 	//syncing user inventory
-	APP.inventory = new APP.Inventory;
+	APP.inventory = new APP.Inventory();
 	APP.inventoryTable.query().forEach(function(val, index, array){
 		APP.globalCID = val._rid;
 		var temp = val.getFields();
@@ -29,7 +29,7 @@ function DBXtoBB(){
 	})
 
 	//syncing user favorites
-	APP.favorites = new APP.Favorites;
+	APP.favorites = new APP.Favorites();
 	APP.favoritesTable.query().forEach(function(val, index, array){
 		APP.globalCID = val._rid;
 		var temp = val.getFields();
