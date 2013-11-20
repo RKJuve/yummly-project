@@ -6,9 +6,6 @@
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/base.css">
 
-	<!-- Main script -->
-	<script	src="main.js"></script>
-
 	<!-- Library scripts -->
 	<script src="lib/jquery.min.js"></script>
 	<script	src="lib/underscore.js"></script>
@@ -16,8 +13,10 @@
 	<script	src="lib/handlebars-v1.1.2.js"></script>
 	<script	src="lib/responsive-nav.min.js"></script>
 
+	<!-- Main script -->
+	<script	src="main.js"></script>
+
 	<!-- Parser script -->
-	<script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js" type="text/javascript"></script>
 	<script src="parsers/ingredientParser.js"></script>
 
 	<!-- Backbone models -->
@@ -67,6 +66,12 @@
 <body>
 
 <!-- Templates -->
+
+
+<script id="user-recipe-template" type="text/template">
+	{{name}}{{ingredients}}
+</script>
+
 
 <script id="search-bar" type="text/template">
 	<form id="form">

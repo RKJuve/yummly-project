@@ -20,7 +20,8 @@ APP.UserRecipeView = Backbone.View.extend({
 		this.render();
 	},
 	render: function () {
-		this.$el.html("user recipe here");
+		var template = Handlebars.compile($("#user-recipe-template").html());
+		this.$el.html(template(this.model.toJSON()));
 	}
 });
 

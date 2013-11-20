@@ -1,10 +1,12 @@
 APP.client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
-APP.recipeTable;
+APP.userRecipeTable;
 APP.inventoryTable;
+APP.DBXsync = false;
 
 function DBXtoBB(){
 	APP.userRecipes = new APP.UserRecipes;
-	APP.recipeTable.query().forEach(function(val, index, array){
+	APP.userRecipeTable.query().forEach(function(val, index, array){
+		APP.globalCID = val._rid;
 		var temp = val.getFields();
 		for (key in temp) {
 			if (key === "ingredients") {
@@ -13,15 +15,18 @@ function DBXtoBB(){
 		}
 		APP.userRecipes.add(new APP.UserRecipe(temp));
 	})
+
 	APP.userRecipes.on("add", function(model, collection, options){
-		APP.recipeTable.getOrInsert(model.cid, model.toJSON());
+		APP.userRecipeTable.getOrInsert(model.cid, model.toJSON());
 	});
 	APP.userRecipes.on("remove", function(model, collection, options){
-		APP.recipeTable.get(model.cid).deleteRecord();
+		APP.userRecipeTable.get(model.cid).deleteRecord();
 	});
 	APP.userRecipes.on("change", function(model, options){
-		APP.recipeTable.get(model.cid).update(model.changed);
+		APP.userRecipeTable.get(model.cid).update(model.changed);
 	});
+
+	APP.DBXsync = true;
 }
 
 $(document).ready(function() {
@@ -57,13 +62,13 @@ $(document).ready(function() {
 	    }
 
 	    // Now you have a datastore. The next few examples can be included here.
-		APP.recipeTable = datastore.getTable('recipe');
+		APP.userRecipeTable = datastore.getTable('userRecipe');
 		DBXtoBB();
 	});
 
 
 	function recipeTableinsert(model){
-		APP.recipeTable.insert(model.toJSON());
+		APP.userRecipeTable.insert(model.toJSON());
 	};
 	function inventoryTableInsert(model) {
 		APP.inventoryTable.insert(model.toJSON());
