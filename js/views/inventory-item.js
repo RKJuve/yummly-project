@@ -1,11 +1,13 @@
 APP.InventoryItemView = Backbone.View.extend({
-
   tagName: "li",
   className: "list-item",
-  template: Handlebars.compile("<a>{{ name }}</a>"),
+
   render: function() {
-    var attributes = this.model.toJSON();
-    this.$el.html(this.template(attributes));
+
+  	var itemTemplate = $("#inventory-list-item").html();
+  	var attributes = this.model.toJSON();
+		itemTemplate = Handlebars.compile(itemTemplate);
+		this.$el.html(itemTemplate(attributes));
     return this;
   }
 });

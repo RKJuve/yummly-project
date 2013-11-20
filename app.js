@@ -67,7 +67,7 @@ var app = express()
 	});
 
 	app.post("/inventory", function(req, res) {
-	  //req.body.id = db.length + 1;
+	  req.body.id = db.length + 1;
 	  db.push(req.body);
 	  res.end();
 	  console.log(id);

@@ -17,7 +17,7 @@ APP.Router = Backbone.Router.extend({
 	},
 	userRecipeDetails: function(recipe_id) {
 		$('#bin').empty();
-		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)}) 
+		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)})
 	},
 	userRecipes: function () {
 		$('#bin').empty();
@@ -65,10 +65,11 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	inventoryItem: function() {  
+	inventoryItem: function() {
 	},
 
 	inventory: function() {
+
 	},
 
 	shoppingListItem: function() {
