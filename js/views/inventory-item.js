@@ -1,4 +1,5 @@
 APP.InventoryItemView = Backbone.View.extend({
+
   tagName: "li",
   className: "list-item",
   template: Handlebars.compile("<a>{{ name }}</a>"),

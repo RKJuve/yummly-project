@@ -10,6 +10,8 @@ APP.InventoryList = Backbone.View.extend({
 
 	render: function() {
 
+		this.$el.empty();
+
 		var inventoryTemplate = $("#inventory-list").html();
 		inventoryTemplate = Handlebars.compile(inventoryTemplate);
 		this.$el.html(inventoryTemplate);

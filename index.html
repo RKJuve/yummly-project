@@ -90,6 +90,17 @@
 </script>
 
 
+<script id="inventory-list" type="text/template">
+	<h3>Add an item to your inventory:</h3>
+  <form class="inventory-form">
+	  <label for="inventory-item-name">Item Name</label>
+	  <input type="text" id="inventory-item-name" name="inventory item name">
+	  <label for="quantity">Quantity</label>
+	  <input type="text" id="quantity" name="quantity">
+  </form>
+</script>
+
+
 <div class="welcome">
 
 	<h1>Welcome to the Yummly App</h1>
@@ -122,7 +133,8 @@
 	<label for="query">Search Yummly</label>
 	<input id="query" type="text"></input>
 	<input type="submit" value="search">
-	</form></div>
+	</form>
+	</div>
 
 	<!-- script to keep form submit from refreshing page
 		and navigate to the search route -->
