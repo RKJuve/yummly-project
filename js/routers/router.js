@@ -69,7 +69,12 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	inventory: function() {
-	},
+        $('#bin').empty();
+        $("inventory").empty();
+        var inventoryListView = new APP.InventoryListView({
+                collection: APP.inventory
+        });
+    },
 
 	shoppingListItem: function() {
 		// APP.shopping = new APP.ShoppingList();

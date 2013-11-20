@@ -68,8 +68,9 @@
 
 <!-- Templates -->
 <script id="user-recipe-details-template" type="text/template">
-	<h2>{{name}}<button type="button">Edit</button></h2> 
+	<h2>{{name}}</h2> 
 	<ul>
+	<button type="button">Edit</button>
 	{{#each ingredients}}
 		<li>{{this}}</li>
 	{{/each}}

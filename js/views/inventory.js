@@ -1,4 +1,4 @@
-APP.InventoryList = Backbone.View.extend({
+APP.InventoryListView = Backbone.View.extend({
 
 	el: "#bin",
 	tagname: "ul",
@@ -18,7 +18,7 @@ APP.InventoryList = Backbone.View.extend({
 
 		this.collection.each(function(model) {
 			APP.inventoryItemView = new APP.InventoryItemView({model: model});
-			this.$el.append(APP.inventoryItemView.render().el);
+			this.$el.append(APP.inventoryItemView.el);
 		}, this);
 
 		return this;
