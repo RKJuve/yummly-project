@@ -1,49 +1,77 @@
-var client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
-var recipeTable;
-var inventoryTable;
+APP.client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
+APP.userRecipeTable;
+APP.inventoryTable;
+APP.DBXsync = false;
+
+function DBXtoBB(){
+	APP.userRecipes = new APP.UserRecipes;
+	APP.userRecipeTable.query().forEach(function(val, index, array){
+		APP.globalCID = val._rid;
+		var temp = val.getFields();
+		for (key in temp) {
+			if (key === "ingredients") {
+				temp[key] = temp[key]._array();
+			}
+		}
+		APP.userRecipes.add(new APP.UserRecipe(temp));
+	})
+
+	APP.userRecipes.on("add", function(model, collection, options){
+		APP.userRecipeTable.getOrInsert(model.cid, model.toJSON());
+	});
+	APP.userRecipes.on("remove", function(model, collection, options){
+		APP.userRecipeTable.get(model.cid).deleteRecord();
+	});
+	APP.userRecipes.on("change", function(model, options){
+		APP.userRecipeTable.get(model.cid).update(model.changed);
+	});
+
+	APP.DBXsync = true;
+}
 
 $(document).ready(function() {
 
-		$(".container").hide();
-		$("html").css("background-color", "#a9e160");
+	$(".container").hide();
+	$("html").css("background-color", "#a9e160");
 
-		$(".login").click(function(e) {
-			e.preventDefault();
-			client.authenticate();
-		});
+	$(".login").click(function(e) {
+		e.preventDefault();
+		APP.client.authenticate();
+	});
 
-		// Try to finish OAuth authorization.
-		client.authenticate({interactive: false}, function (error) {
-		  if (error) {
-		    alert('Authentication error: ' + error);
-		  }
-		});
+	// Try to finish OAuth authorization.
+	APP.client.authenticate({interactive: false}, function (error) {
+	  if (error) {
+	    alert('Authentication error: ' + error);
+	  }
+	});
 
-		if (client.isAuthenticated()) {
-		  console.log('auth sucessful');
-		  $(".login").hide();
-		  $(".welcome").hide();
-		  $("html").css("background-color", "#F3F3F3");
-		  $(".container").show();
-		}
+	if (APP.client.isAuthenticated()) {
+	  console.log('auth sucessful');
+	  $(".login").hide();
+	  $(".welcome").hide();
+	  $("html").css("background-color", "#F3F3F3");
+	  $(".container").show();
+	  APP.router.navigate("home", {trigger:true});
+	}
 
-	var datastoreManager = client.getDatastoreManager();
+	var datastoreManager = APP.client.getDatastoreManager();
 	datastoreManager.openDefaultDatastore(function (error, datastore) {
 	    if (error) {
 	        alert('Error opening default datastore: ' + error);
 	    }
 
 	    // Now you have a datastore. The next few examples can be included here.
-		recipeTable = datastore.getTable('recipe');
-		inventoryTable = datastore.getTable('inventoryItem');
+		APP.userRecipeTable = datastore.getTable('userRecipe');
+		DBXtoBB();
 	});
 
 
 	function recipeTableinsert(model){
-		recipeTable.insert(model.toJSON());
+		APP.userRecipeTable.insert(model.toJSON());
 	};
 	function inventoryTableInsert(model) {
-		inventoryTable.insert(model.toJSON());
+		APP.inventoryTable.insert(model.toJSON());
 	};
 
 	APP.client.getAccountInfo(function(error, accountInfo) {
@@ -51,7 +79,9 @@ $(document).ready(function() {
 	    return showError(error);  // Something went wrong.
 	  }
 
-	  // alert("Hello, " + accountInfo.name + "!");
+	   // alert("Hello, " + accountInfo.name + "!");
+
+	   
 	});
 
 });

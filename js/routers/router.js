@@ -10,7 +10,12 @@ APP.Router = Backbone.Router.extend({
 		"search/:recipe_id": "details",
 		"favorite": "favorite",
 		"favorites": "favorites",
-		"addRecipe": "addRecipe"
+		"addRecipe": "addRecipe",
+		"userRecipes": "userRecipes",
+		"home": "home"
+	},
+	userRecipes: function () {
+		APP.userRecipesView = new APP.UserRecipesView({collection: APP.userRecipes});
 	},
 	addRecipe: function(){
 		APP.addRecipeView = new APP.AddRecipeView();
@@ -142,6 +147,18 @@ APP.Router = Backbone.Router.extend({
 				APP.favoritesView.render();
 			}
 		});
+<<<<<<< HEAD
+=======
+	},
+
+	home: function() {
+		console.log("home route hit");
+		APP.homeView = new APP.HomeView();
+		$('#form').submit(function(){
+			APP.router.navigate("search", {trigger: true});
+			return false;
+		});
+>>>>>>> 4006cda03fb4fda33901be3025aea1e1d7cdf424
 	}
 
 
@@ -149,6 +166,5 @@ APP.Router = Backbone.Router.extend({
 
 APP.router = new APP.Router();
 Backbone.history.start({
-	//pushState: true,
 	root: "/"
 });

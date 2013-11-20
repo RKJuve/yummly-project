@@ -243,18 +243,24 @@
 
   // Create a new model with the specified attributes. A client id (`cid`)
   // is automatically generated and assigned for you.
-  var Model = Backbone.Model = function(attributes, options) {
+var Model = Backbone.Model = function(attributes, options) {
     var attrs = attributes || {};
     options || (options = {});
-    this.cid = _.uniqueId('c');
+    this.cid = (function() {
+      if (APP.DBXsync) {
+        return _.uniqueId('c');
+      } else {
+        return APP.globalCID;
+      }
+    })();
     this.attributes = {};
     if (options.collection) this.collection = options.collection;
     if (options.parse) attrs = this.parse(attrs, options) || {};
     attrs = _.defaults({}, attrs, _.result(this, 'defaults'));
     this.set(attrs, options);
     this.changed = {};
-    this.initialize.apply(this, arguments);
-  };
+    this.initialize.apply(this, arguments); 
+};
 
   // Attach all inheritable methods to the Model prototype.
   _.extend(Model.prototype, Events, {
