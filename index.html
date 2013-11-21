@@ -121,7 +121,7 @@
   	<li>{{this}}</li>
   	{{/each}}
   </ul>
-  
+
   <br>
   <button id='saveToList'>save to list</button> See directions for this recipe at: <a href="{{source.sourceRecipeUrl}}">{{source.sourceDisplayName}}</a>
 
@@ -169,11 +169,13 @@
 		<input type="text" id="quantity" name="quantity">
 		<input id="saveShoppingItem" type="submit" value="Add to Shopping List">
 	</form>
+	<button id="deleteShoppingItems">Clear All Purchased Items</button>
 </script>
 
 <script id="shopping-list-item" type="text/template">
-		<span>{{scalar}}</span>
-		<span>{{rest}}</span>
+		<span class="checkBox"></span>
+		<span class="howManyOfItem">{{scalar}}</span>
+		<span class="shoppingItemName">{{rest}}</span>
 </script>
 
 

@@ -35,5 +35,17 @@ APP.ShoppingListView = Backbone.View.extend({
 			event.preventDefault();
 			that.addToShoppingList();
 		});
+
+		$(".checkBox, .shoppingItemName, .howManyOfItem").on("click", function() {
+			$(this).toggleClass("boxChecked");
+			$(this).next("span").toggleClass("grayedOut").next("span").toggleClass("grayedOut");
+			$(this).parent().toggleClass("toDelete");
+		});
+
+		$("#deleteShoppingItems").on("click", function() {
+			//$(".toDelete").remove();
+			APP.shoppingList.remove(that.model.cid);
+			console.log("deleted?");
+		});
 	}
 });

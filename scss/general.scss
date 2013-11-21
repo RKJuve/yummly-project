@@ -140,4 +140,39 @@ button, input[type="submit"] {
   }
 }
 
+.shopping-list-item {
+  list-style-type: none;
+  font-size: 2em;
+  height: 40px;
+  margin: 0.25em 0;
+}
+
+.checkBox {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $green;
+  background-color: #fff;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.boxChecked {
+  background-color: $green;
+}
+
+.grayedOut {
+  color: #ddd;
+}
+
+.howManyOfItem {
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+.shoppingItemName {
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
 // @include span-columns(n of 6);
