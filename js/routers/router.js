@@ -2,9 +2,7 @@ APP.Router = Backbone.Router.extend({
 
 	routes: {
 		"inventory": "inventory",
-		"inventory-item": "inventoryItem",
-		"shopping-list": "shoppingList",
-		"shopping-list-item": "shoppingListItem",
+		"shopping": "shoppingList",
 		"week": "weeklyScheduleRoute",
 		"search": "search",
 		"search/:recipe_id": "details",
@@ -22,7 +20,7 @@ APP.Router = Backbone.Router.extend({
 	},
 	userRecipeDetails: function(recipe_id) {
 		$('#bin').empty();
-		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)}); 
+		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)});
 	},
 	userRecipes: function () {
 		$('#bin').empty();
@@ -49,7 +47,7 @@ APP.Router = Backbone.Router.extend({
 	},
 	search: function() {
 		$('#bin').empty();
-		var query = $('#query').val()
+		var query = $('#query').val();
 		APP.searchResults = new APP.SearchResults();
 		APP.searchResults.fetch({
 			data: {
@@ -70,99 +68,45 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	inventoryItem: function() {  
-	},
-
 	inventory: function() {
-        $('#bin').empty();
-        $("inventory").empty();
-        var inventoryListView = new APP.InventoryListView({
-                collection: APP.inventory
-        });
-    },
-
-	shoppingListItem: function() {
-		// APP.shopping = new APP.ShoppingList();
-		// APP.shopping.fetch({
-		// 	success: function() {
-		// 		APP.shoppingListItem1 = APP.shopping.get(1);
-		// 		APP.shoppingListItemView = new APP.ShoppingListItemView({
-		// 			model: APP.shoppingListItem1
-		// 		});
-		// 		APP.shoppingListItemView.render();
-  //       $("body").append(APP.shoppingListItemView.$el);
-		// 	}
-		// });
+		$('#bin').empty();
+		$("inventory").empty();
+		var inventoryListView = new APP.InventoryListView({
+			collection: APP.inventory
+		});
 	},
 
 	shoppingList: function() {
-		// APP.shoppingList = new APP.ShoppingList();
-		// APP.shoppingList.fetch({
-		// 	success: function() {
-		// 		var shoppingListView = new APP.ShoppingListView({
-		// 			collection: APP.shoppingList
-		// 		});
-		// 		shoppingListView.render();
-		// 	}
-		// });
+		console.log("hi there");
+		$('#bin').empty();
+		var shoppingListView = new APP.ShoppingListView({
+			collection: APP.shoppingList
+		});
 	},
 
 	weeklyScheduleRoute: function() {
-		// APP.weeklySchedule = new APP.WeeklySchedule();
-		// APP.weeklySchedule.fetch({
-		// 	success: function() {
-		// 		var weeklyScheduleView = new APP.WeeklyScheduleView({
-		// 			collection: APP.weeklySchedule
-		// 		});
-		// 		weeklyScheduleView.render();
-		// 	}
-		// });
 	},
 
 	favorite: function() {
-		// APP.favorites = new APP.Favorites();
-		// APP.favorites.fetch({
-		// 	success: function() {
-		// 		APP.favoriteRecipe1 = APP.favorites.get(1);
-		// 		APP.favoriteView = new APP.FavoriteView({
-		// 			model: APP.favoriteRecipe1
-		// 		});
-		// 		APP.favoriteView.render();
-		// 		$("body").append(APP.favoriteView.$el);
-		// 	}
-		// });
 	},
 
 	favorites: function() {
-		// APP.favorites = new APP.Favorites();
-		// APP.favorites.fetch({
-		// 	success: function() {
-		// 		APP.favoritesView = new APP.FavoritesView({
-		// 			collection: APP.favorites
-		// 		});
-		// 		APP.favoritesView.render();
-		// 	}
-		// });
 	},
 
 	home: function() {
-		$("#bin").empty();
+		console.log("home route hit");
+		$('#bin').empty();
+		$("inventory").empty();
 		APP.homeView = new APP.HomeView();
 		APP.headerView = new APP.HeaderView();
+		this.bind("route", function(route){
+			APP.headerView.render(route);
+    });
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
-	},
-	initialize: function() {
-		this.bind("route", function(route){
-			APP.headerView.render(route)	
-
-		});	
 	}
-
-
-
 });
 
 APP.router = new APP.Router();

@@ -5,7 +5,7 @@ APP.SearchResultsView = Backbone.View.extend({
 	render: function() {
 		this.collection.each(function(model){
 			APP.searchResultView = new APP.SearchResultView({model:model});
-			this.$el.append(searchResultView.el);
+			this.$el.append(APP.searchResultView.el);
 			this.$el.find("form").on("submit", function(event) {
 				console.log("fire");
 				//event.preventDefault();

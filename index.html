@@ -70,7 +70,7 @@
 
 <!-- Templates -->
 <script id="user-recipe-details-template" type="text/template">
-	<h2>{{name}}</h2> 
+	<h2>{{name}}</h2>
 	<ul>
 	<button id="edit" type="button">Edit</button>
 	{{#each ingredients}}
@@ -121,12 +121,38 @@
 
 <script id="inventory-list" type="text/template">
 	<h3>Add an item to your inventory:</h3>
-  <form class="inventory-form">
+  <form id="inventory-form">
 	  <label for="inventory-item-name">Item Name</label>
 	  <input type="text" id="inventory-item-name" name="inventory item name">
 	  <label for="quantity">Quantity</label>
 	  <input type="text" id="quantity" name="quantity">
+	  <input id="saveItem" type="submit" value="Add to Inventory">
   </form>
+</script>
+
+<script id="inventory-list-item" type="text/template">
+	<li class="inventory-list-item">
+		<span>{{quantity}}</span>
+		<span>{{name}}</span>
+	</li>
+</script>
+
+<script id="shopping-list" type="text/template">
+	<h3>Add an item to your shopping list</h3>
+	<form id="shopping-list">
+		<label for="name">Item name:</label>
+		<input type="text" id="name" name="name">
+		<label for="quantity">Quantity</label>
+		<input type="text" id="quantity" name="quantity">
+		<input id="saveShoppingItem" type="submit" value="Add to Shopping List">
+	</form>
+</script>
+
+<script id="shopping-list-item" type="text/template">
+	<li class="shopping-list-item">
+		<span>{{quantity}}</span>
+		<span>{{name}}</span>
+	</li>
 </script>
 
 
@@ -142,6 +168,8 @@
 <section class="content" id="content">
 
 <header class="header">
+
+
 	<a href="#menu" class="menu-link">Menu</a>
 	<h2 id="headerh2">nb: make this change with route</h2>
 	<nav id="menu" role="navigation">
@@ -153,36 +181,37 @@
 			<li><a href="#" class="shopping">Shopping List</a></li>
 			<li><a href="#" class="favorites">Favorites</a></li>
 			<li><a href="javascript:APP.router.navigate('addRecipe', {trigger: true});" class="addRecipe">Add Recipe</a></li>
-            <li><a href="javascript:APP.router.navigate('userRecipes', {trigger: true});" class="userRecipes">User Recipes</a></li>
+      <li><a href="javascript:APP.router.navigate('userRecipes', {trigger: true});" class="userRecipes">User Recipes</a></li>
 
 		</ul>
 	</nav>
+
 </header>
 
 	<section class="main">
 
+	<ul id="inventory">
+	</ul>
+
+	<div id="shopping"></div>
+
 	<div id="bin">
-		<form id="form">
+<!-- 		<form id="form">
 	<label for="query">Search Yummly</label>
 	<input id="query" type="text"></input>
 	<input type="submit" value="search">
-	</form>
+	</form> -->
+
 	</div>
 
 	<!-- script to keep form submit from refreshing page
 		and navigate to the search route -->
 	<script type="text/javascript">
-	$(document).ready(function(){
-		$('#form').submit(function(){
-			APP.router.navigate("search", {trigger: true});
-			return false;
-		});
-		$(".login").click(function(e) {
-			e.preventDefault();
-			client.authenticate();
-		});
-
-	});
+	// $(document).ready(function(){
+	// 	$('#form').submit(function(){
+	// 		APP.router.navigate("search", {trigger: true});
+	// 		return false;
+	// 	});
 	</script>
 
 	<script>

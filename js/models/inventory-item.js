@@ -1,6 +1,6 @@
 APP.InventoryItem = Backbone.Model.extend({
 	defaults: {
-		name: undefined,
+		name: "undefined",
 		quantity: 0,
 		staple: false,
 		seasonal: false,

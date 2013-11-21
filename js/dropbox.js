@@ -2,6 +2,7 @@ APP.client = new Dropbox.Client({key: "i401wu5aqq6zpwk"});
 APP.userRecipeTable;
 APP.inventoryTable;
 APP.favoritesTable;
+APP.shoppingTable;
 APP.DBXsync = false;
 
 function DBXtoBB(){
@@ -36,6 +37,14 @@ function DBXtoBB(){
 		APP.favorites.add(new APP.Favorite(temp));
 	})
 
+	// syncing shopping list
+	APP.shoppingList = new APP.ShoppingList();
+	APP.shoppingTable.query().forEach(function(val, index, array) {
+		APP.globalCID = val._rid;
+		var temp = val.getFields();
+		APP.shoppingList.add(new APP.ShoppingListItem(temp));
+	});
+
 
 
 	// user recipes event listeners
@@ -69,6 +78,17 @@ function DBXtoBB(){
 	});
 	APP.favorites.on("change", function(model, options){
 		APP.favoritesTable.get(model.cid).update(model.changed);
+	});
+
+	// shopping list user add event listeners
+	APP.shoppingList.on("add", function(model, collection, options) {
+		APP.shoppingTable.getOrInsert(model.cid, model.toJSON());
+	});
+	APP.shoppingList.on("remove", function(model, collection, options) {
+		APP.shoppingTable.get(model.cid).deleteRecord();
+	});
+	APP.shoppingList.on("change", function(model, options) {
+		APP.shoppingTable.get(model.cid).update(model.changed);
 	});
 
 	// sync done
@@ -106,11 +126,12 @@ $(document).ready(function() {
 	    if (error) {
 	        alert('Error opening default datastore: ' + error);
 	    }
-
+	    	console.log("getDatastoreManager");
 	    //assign APP scoped variables to the datastores
 		APP.userRecipeTable = datastore.getTable('userRecipe');
 		APP.inventoryTable = datastore.getTable('inventory');
 		APP.favoritesTable = datastore.getTable('favorites');
+		APP.shoppingTable = datastore.getTable("shopping");
 		DBXtoBB();
 	});
 
@@ -129,7 +150,7 @@ $(document).ready(function() {
 
 	   // alert("Hello, " + accountInfo.name + "!");
 
-	   
+
 	});
 
 });
