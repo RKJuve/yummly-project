@@ -11,19 +11,24 @@ APP.Router = Backbone.Router.extend({
 		"addRecipe": "addRecipe",
 		"userRecipes": "userRecipes",
 		"userRecipes/:recipe_id": "userRecipeDetails",
+		"editRecipe/:recipe_id": "editRecipe",
 		"home": "home"
+	},
+	editRecipe: function(recipe_id) {
+		$('#bin').empty();
+		APP.userRecipeEditView = new APP.UserRecipeEditView({model: APP.userRecipes.get(recipe_id), collection:APP.userRecipes});
 	},
 	userRecipeDetails: function(recipe_id) {
 		$('#bin').empty();
-		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)})
+		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)});
 	},
 	userRecipes: function () {
 		$('#bin').empty();
 		APP.userRecipesView = new APP.UserRecipesView({collection: APP.userRecipes});
 	},
 	addRecipe: function(){
+		$('#bin').empty();
 		APP.addRecipeView = new APP.AddRecipeView();
-		console.log("add recipe hit");
 	},
 	details: function(recipie_id){
 		APP.recipieDetails = new APP.RecipieDetails({id: recipie_id});
@@ -42,7 +47,7 @@ APP.Router = Backbone.Router.extend({
 	},
 	search: function() {
 		$('#bin').empty();
-		var query = $('#query').val()
+		var query = $('#query').val();
 		APP.searchResults = new APP.SearchResults();
 		APP.searchResults.fetch({
 			data: {
@@ -87,15 +92,18 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	home: function() {
+		console.log("home route hit");
 		$('#bin').empty();
 		APP.homeView = new APP.HomeView();
+		APP.headerView = new APP.HeaderView();
+		this.bind("route", function(route){
+			APP.headerView.render(route);
+    });
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
 	}
-
-
 });
 
 APP.router = new APP.Router();
