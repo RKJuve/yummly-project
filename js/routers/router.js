@@ -2,9 +2,7 @@ APP.Router = Backbone.Router.extend({
 
 	routes: {
 		"inventory": "inventory",
-		"inventory-item": "inventoryItem",
 		"shopping-list": "shoppingList",
-		"shopping-list-item": "shoppingListItem",
 		"week": "weeklyScheduleRoute",
 		"search": "search",
 		"search/:recipe_id": "details",
@@ -65,18 +63,12 @@ APP.Router = Backbone.Router.extend({
 		});
 	},
 
-	inventoryItem: function() {
-	},
-
 	inventory: function() {
 		$('#bin').empty();
 		$("inventory").empty();
 		var inventoryListView = new APP.InventoryListView({
 			collection: APP.inventory
 		});
-	},
-
-	shoppingListItem: function() {
 	},
 
 	shoppingList: function() {
