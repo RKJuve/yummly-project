@@ -80,4 +80,18 @@ input {
   color: #fff;
 }
 
+button, input[type="submit"] {
+  background: $green;
+  padding: 0.5em;
+  color: #fff;
+  border: 1px solid darken($green, 10%);
+  border-bottom: 7px solid darken($green, 10%);
+
+  &:hover {
+    background-color: darken($green, 10%);
+    border: 1px solid darken($green, 20%);
+    border-bottom: 7px solid darken($green, 20%);
+  }
+}
+
 // @include span-columns(n of 6);
