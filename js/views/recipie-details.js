@@ -1,11 +1,12 @@
 APP.RecipieDetailsView = Backbone.View.extend({
-	el: '#bin',
+	el: '#searchDeets',
 	tagName: 'p',
 	events: {
 		"click #saveToList": "saveToList"
 	},
 	render: function() {
-		this.$el.html(this.model.get("ingredientLines")+"<br><br><button id='saveToList'>save to list</button>");
+		var template = Handlebars.compile($("#search-details-template").html());
+		this.$el.html(template(this.model.toJSON()));
 	},
 	saveToList: function(){
 		this.model.saveToList();

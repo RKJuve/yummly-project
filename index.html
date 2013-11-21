@@ -105,7 +105,16 @@
 </script>
 
 <script id="search-result-template" type="text/template">
-	{{recipeName}}
+	<li class="searchItem"><div>
+		<img src="{{smallImageUrls.[0]}}"/> <h4>{{recipeName}}</h4>
+	</div></li>
+</script>
+
+<script id="search-details-template" type="text/template">
+  <img src="{{images.[0].hostedLargeUrl}}"/>
+  {{name}}
+
+  <br><br><button id='saveToList'>save to list</button>
 </script>
 
 <script id="user-recipe-form" type="text/template">
@@ -195,24 +204,8 @@
 
 	<div id="shopping"></div>
 
-	<div id="bin">
-<!-- 		<form id="form">
-	<label for="query">Search Yummly</label>
-	<input id="query" type="text"></input>
-	<input type="submit" value="search">
-	</form> -->
-
-	</div>
-
-	<!-- script to keep form submit from refreshing page
-		and navigate to the search route -->
-	<script type="text/javascript">
-	// $(document).ready(function(){
-	// 	$('#form').submit(function(){
-	// 		APP.router.navigate("search", {trigger: true});
-	// 		return false;
-	// 	});
-	</script>
+	<div id="bin"></div>
+	<div id="searchDeets"></div>
 
 	<script>
 		$("a.home").click(function(e) {

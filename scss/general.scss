@@ -80,4 +80,30 @@ input {
   color: #fff;
 }
 
+.searchItem {
+  width: 100%;
+  margin: 10px 0px;
+  list-style-type: none;
+  float: left;
+  display: inline;
+  h4 {
+    margin-left: 95px;
+    vertical-align: top;
+  }
+  img {
+    vertical-align: middle;
+    float: left;
+  }
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 0px black;
+  }
+}
+
+#searchDeets {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
 // @include span-columns(n of 6);

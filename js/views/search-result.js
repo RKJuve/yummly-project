@@ -19,7 +19,6 @@ APP.SearchResultsView = Backbone.View.extend({
 
 //model view
 APP.SearchResultView = Backbone.View.extend({
-	tagName:'li',
 	initialize: function(){
 		this.render();
 	},

@@ -15,22 +15,23 @@ APP.Router = Backbone.Router.extend({
 		"home": "home"
 	},
 	editRecipe: function(recipe_id) {
-		$('#bin').empty();
+		APP.clearDivs();
 		APP.userRecipeEditView = new APP.UserRecipeEditView({model: APP.userRecipes.get(recipe_id), collection:APP.userRecipes});
 	},
 	userRecipeDetails: function(recipe_id) {
-		$('#bin').empty();
+		APP.clearDivs();
 		APP.userRecipeDetailsView = new APP.UserRecipeDetailsView({model: APP.userRecipes.get(recipe_id)});
 	},
 	userRecipes: function () {
-		$('#bin').empty();
+		APP.clearDivs();
 		APP.userRecipesView = new APP.UserRecipesView({collection: APP.userRecipes});
 	},
 	addRecipe: function(){
-		$('#bin').empty();
+		APP.clearDivs();
 		APP.addRecipeView = new APP.AddRecipeView();
 	},
 	details: function(recipie_id){
+		APP.clearDivs();
 		APP.recipieDetails = new APP.RecipieDetails({id: recipie_id});
 		APP.recipieDetails.fetch({
 			data: {
@@ -46,8 +47,8 @@ APP.Router = Backbone.Router.extend({
 
 	},
 	search: function() {
-		$('#bin').empty();
 		var query = $('#query').val();
+		APP.clearDivs();
 		APP.searchResults = new APP.SearchResults();
 		APP.searchResults.fetch({
 			data: {
@@ -69,16 +70,14 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	inventory: function() {
-		$('#bin').empty();
-		$("inventory").empty();
+		APP.clearDivs();
 		var inventoryListView = new APP.InventoryListView({
 			collection: APP.inventory
 		});
 	},
 
 	shoppingList: function() {
-		console.log("hi there");
-		$('#bin').empty();
+		APP.clearDivs();
 		var shoppingListView = new APP.ShoppingListView({
 			collection: APP.shoppingList
 		});
@@ -94,20 +93,27 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	home: function() {
+		APP.clearDivs();
 		console.log("home route hit");
-		$('#bin').empty();
-		$("inventory").empty();
 		APP.homeView = new APP.HomeView();
 		APP.headerView = new APP.HeaderView();
-		this.bind("route", function(route){
-			APP.headerView.render(route);
-    });
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});
 			return false;
 		});
+	},
+	initialize: function() {
+		this.bind("route", function(route){
+			APP.headerView.render(route);
+    	});
 	}
 });
+
+APP.clearDivs = function(){
+	['#bin', "#inventory","#shopping","#searchDeets"].forEach(function(val){
+		$(val).empty();
+	});
+}
 
 APP.router = new APP.Router();
 Backbone.history.start({
