@@ -3,7 +3,7 @@ APP.ShoppingListItem = Backbone.Model.extend({
 		inventoryItem: false,
 		recipeIngredient: false,
 		organic: false,
-		desiredStore: "undefined",
+		desiredStore: "",
 		inSeason: false
 	}
 });
