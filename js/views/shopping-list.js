@@ -20,7 +20,6 @@ APP.ShoppingListView = Backbone.View.extend({
 		var that = this;
 
 		this.collection.each(function(model) {
-			console.log(model);
 			var shoppingListItemView = new APP.ShoppingListItemView({model: model});
 			this.$el.append(shoppingListItemView.el);
 		}, this);

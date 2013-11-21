@@ -94,7 +94,7 @@
 </script>
 
 <script id="user-recipe-template" type="text/template">
-	<h3>{{name}}</h3>
+	<h3>{{name}}</h3><button type="button" class="addToPlanned">add</button><button type="button" class="editRecipe">details</button>
 </script>
 
 <script id="search-bar" type="text/template">
@@ -201,16 +201,18 @@
 			<li><a href="#" class="week">Weekly Schedule</a></li>
 			<li><a href="#" class="shopping">Shopping List</a></li>
 			<li><a href="#" class="favorites">Favorites</a></li>
-			<li><a href="javascript:APP.router.navigate('addRecipe', {trigger: true});" class="addRecipe">Add Recipe</a></li>
       <li><a href="javascript:APP.router.navigate('userRecipes', {trigger: true});" class="userRecipes">User Recipes</a></li>
 
 		</ul>
 	</nav>
 
 </header>
-
 	<section class="main">
+	
 	<div id="bin"></div>
+	
+	<div id="userRecipes">
+	</div>
 
 	<ul id="inventory">
 	</ul>

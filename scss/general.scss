@@ -7,9 +7,6 @@ body {
   height: 100%;
 }
 
-button {
-  border-radius: 1px;
-}
 
 .welcome {
   color: #fff;
@@ -82,6 +79,24 @@ input {
   border-bottom: 1px solid #fff;
   font-size: 1.25em;
   color: #fff;
+}
+
+#userRecipes {
+  list-style-type: none;
+  list-style-position: inside;
+  li {
+    margin: 5px 0px;
+    height: 43px;
+    clear: both;
+    button {
+      float: right;
+    }
+  }
+  h3 {
+    width: 300px;
+    display: inline-block;
+  }
+
 }
 
 .searchItem {

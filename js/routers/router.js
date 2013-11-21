@@ -105,7 +105,7 @@ APP.Router = Backbone.Router.extend({
 });
 
 APP.clearDivs = function(){
-	['#bin', "#inventory","#shopping","#searchDeets"].forEach(function(val){
+	['#bin', "#inventory","#shopping","#searchDeets","#userRecipes"].forEach(function(val){
 		$(val).empty();
 	});
 }
