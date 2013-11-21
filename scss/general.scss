@@ -7,6 +7,10 @@ body {
   height: 100%;
 }
 
+button {
+  border-radius: 1px;
+}
+
 .welcome {
   color: #fff;
   margin: 0 auto;
@@ -102,8 +106,23 @@ input {
 
 #searchDeets {
   width: 100%;
-  img {
+  h3 {
+    width: 80%;
+    text-align:center;
+    margin: auto;
+  }
+  ul {
+    list-style-position: inside;
+  }
+  img.top {
     width: 100%;
+  }
+  footer {
+    text-align: center;
+    font-style: italic;
+    img{
+      vertical-align: middle;
+    }
   }
 }
 // @include span-columns(n of 6);

@@ -111,10 +111,24 @@
 </script>
 
 <script id="search-details-template" type="text/template">
-  <img src="{{images.[0].hostedLargeUrl}}"/>
-  {{name}}
 
-  <br><br><button id='saveToList'>save to list</button>
+  <img class="top" src="{{images.[0].hostedLargeUrl}}"/>
+  <h3>{{name}}</h3>
+
+  <h4>Ingredients:</h4>
+  <ul>
+  	{{#each ingredientLines}}
+  	<li>{{this}}</li>
+  	{{/each}}
+  </ul>
+  
+  <br>
+  <button id='saveToList'>save to list</button> See directions for this recipe at: <a href="{{source.sourceRecipeUrl}}">{{source.sourceDisplayName}}</a>
+
+  <br><br>
+  <footer>
+  information powered by<img alt='Yummly' src='http://static.yummly.com/api-logo.png'/>
+  </footer>
 </script>
 
 <script id="user-recipe-form" type="text/template">
@@ -198,13 +212,13 @@
 </header>
 
 	<section class="main">
+	<div id="bin"></div>
 
 	<ul id="inventory">
 	</ul>
 
 	<div id="shopping"></div>
 
-	<div id="bin"></div>
 	<div id="searchDeets"></div>
 
 	<script>

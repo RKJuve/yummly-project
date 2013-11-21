@@ -9,6 +9,11 @@ APP.HomeView = Backbone.View.extend({
 		var homeTemplate = $("#search-bar").html();
 		var template = Handlebars.compile(homeTemplate);
 		this.$el.html(template);
-
+		$('#form').submit(function(){
+			console.log("form submit");
+			APP.router.navigate("");
+			APP.router.navigate("search", {trigger: true});
+			return false;
+		});
 	}
 });

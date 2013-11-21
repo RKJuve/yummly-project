@@ -49,6 +49,7 @@ APP.Router = Backbone.Router.extend({
 	search: function() {
 		var query = $('#query').val();
 		APP.clearDivs();
+		APP.homeView = new APP.HomeView();
 		APP.searchResults = new APP.SearchResults();
 		APP.searchResults.fetch({
 			data: {
@@ -61,10 +62,6 @@ APP.Router = Backbone.Router.extend({
 				}
 				APP.searchResultsView = new APP.SearchResultsView({collection: APP.searchResults});
 				APP.searchResultsView.render();
-				$('#form').submit(function(){
-					APP.router.navigate("search", {trigger: true});
-					return false;
-				});
 			}
 		});
 	},
@@ -97,10 +94,6 @@ APP.Router = Backbone.Router.extend({
 		console.log("home route hit");
 		APP.homeView = new APP.HomeView();
 		APP.headerView = new APP.HeaderView();
-		$('#form').submit(function(){
-			APP.router.navigate("search", {trigger: true});
-			return false;
-		});
 	},
 	initialize: function() {
 		this.bind("route", function(route){
