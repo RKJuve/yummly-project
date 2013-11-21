@@ -11,10 +11,7 @@ APP.InventoryListView = Backbone.View.extend({
 			name: document.forms["inventory-form"]["inventory-item-name"].value,
 			quantity: document.forms["inventory-form"]["quantity"].value
 		};
-		if (!APP.inventory) {
-			APP.inventory = new APP.Inventory();
-		}
-		APP.inventory.add(new APP.Inventory(input));
+		APP.inventory.add(input);
 	},
 
 	render: function() {

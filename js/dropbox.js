@@ -23,7 +23,6 @@ function DBXtoBB(){
 
 	//syncing user inventory
 	APP.inventory = new APP.Inventory();
-	console.log("dasfd")
 	APP.inventoryTable.query().forEach(function(val, index, array){
 		APP.globalCID = val._rid;
 		var temp = val.getFields();
