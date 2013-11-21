@@ -6,8 +6,8 @@ APP.UserRecipesView = Backbone.View.extend({
 	},
 	render: function() {
 		this.collection.each(function(model){
-			APP.userRecipeView = new APP.UserRecipeView({model:model});
-			this.$el.append(APP.userRecipeView.el);
+			var userRecipeView = new APP.UserRecipeView({model:model});
+			this.$el.append(userRecipeView.el);
 		}, this);
 		this.$el.wrapInner("<ul  />")
 	}
@@ -21,7 +21,6 @@ APP.UserRecipeView = Backbone.View.extend({
 	},
 	viewDetails: function() {
 		var navTarget = "userRecipes/"+this.model.cid;
-		console.log(navTarget);
 		APP.router.navigate(navTarget, {trigger: true});
 	},
 	initialize: function() {
