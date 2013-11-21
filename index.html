@@ -54,6 +54,7 @@
 	<script	src="views/user-recipes.js"></script>
 	<script	src="views/user-recipe-details.js"></script>
 	<script src="views/user-recipe-edit.js"></script>
+	<script src="views/header.js"></script>
 
 	<!-- Backbone router -->
 	<script	src="routers/router.js"></script>
@@ -71,7 +72,7 @@
 <script id="user-recipe-details-template" type="text/template">
 	<h2>{{name}}</h2> 
 	<ul>
-	<button type="button">Edit</button>
+	<button id="edit" type="button">Edit</button>
 	{{#each ingredients}}
 		<li>{{this}}</li>
 	{{/each}}
@@ -88,6 +89,7 @@
 	{{/each}}
 	<button id="addLine" type="button">Add another line</button>
 	<button id="save" type="button">Save</button>
+	<button id="destroy" type="button">Delete Recipe</button>
 	</form>
 </script>
 
@@ -141,10 +143,10 @@
 
 <header class="header">
 	<a href="#menu" class="menu-link">Menu</a>
-	<h2>test</h2>
+	<h2 id="headerh2">nb: make this change with route</h2>
 	<nav id="menu" role="navigation">
 		<ul>
-			<li><a href="javascript:APP.router.navigate('home', {trigger: true});" class="home">Home</a></li>
+			<li><a href="#" class="home">Home</a></li>
 			<li><a href="#" class="search">Search</a></li>
 			<li><a href="#" class="inventory">Inventory</a></li>
 			<li><a href="#" class="week">Weekly Schedule</a></li>
@@ -186,7 +188,7 @@
 	<script>
 		$("a.home").click(function(e) {
 			e.preventDefault();
-			APP.router.navigate("", {trigger: true});
+			APP.router.navigate("home", {trigger: true});
 		});
 		$("a.search").click(function(e) {
 			e.preventDefault();

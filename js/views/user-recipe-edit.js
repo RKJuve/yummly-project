@@ -13,6 +13,7 @@ APP.UserRecipeEditView = Backbone.View.extend({
 			APP.userRecipes = new APP.UserRecipes();
 		}
 		this.model.set(temp);
+		APP.router.navigate("userRecipes", {trigger:true});
 	},
 	ingredientCount: null,
 	render: function() {
@@ -25,10 +26,18 @@ APP.UserRecipeEditView = Backbone.View.extend({
 		$('#addLine').on("click", function(){
 			$('#addLine').before('<input type="text" id="ingredient_'+ that.ingredientCount +'" placeholder="..."/>');
 			that.ingredientCount++;
-		});
-		
+		});		
 		$('#save').on("click",function(){
 			that.updateRecipe();
+		});
+		$('#destroy').on("click",function(){
+			var r = confirm("You sure about that?")
+			if (r == true) {
+				APP.userRecipes.remove(that.model.cid);
+				APP.router.navigate("userRecipes", {trigger:true})		
+			} else {
+				return;
+			}
 		});
 	}
 });

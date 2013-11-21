@@ -4,14 +4,13 @@ APP.AddRecipeView = Backbone.View.extend({
 		this.render();
 	},
 	saveRecipe: function() {
+		console.log("save recipe from add recipe");
 		var temp = {name: document.forms["recipe-form"]["recipeName"].value, ingredients:[]};
 		for (var i=0; i<this.ingredientCount; i++){
 			temp.ingredients[i] = document.forms["recipe-form"]["ingredient_"+(i)].value;
 		}
-		if (!APP.userRecipes) {
-			APP.userRecipes = new APP.UserRecipes();
-		}
-		APP.userRecipes.add(new APP.UserRecipe(temp));
+		APP.userRecipes.add(temp);
+		APP.router.navigate("userRecipes", {trigger: true});
 	},
 	ingredientCount: 1,
 	render: function() {
