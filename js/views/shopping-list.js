@@ -1,6 +1,6 @@
 APP.ShoppingListView = Backbone.View.extend({
 
-	el: "#bin",
+	el: "#shopping",
 
 	initialize: function() {
 		this.render();
@@ -35,6 +35,7 @@ APP.ShoppingListView = Backbone.View.extend({
 			});
 			this.$el.append(APP.shoppingListItemView);
 		}, this);
+		this.$el.wrapInner("<ul />");
 		return this;
 	}
 });

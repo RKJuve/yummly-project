@@ -121,6 +121,24 @@
 	</li>
 </script>
 
+<script id="shopping-list" type="text/template">
+	<h3>Add an item to your shopping list</h3>
+	<form id="shopping-list">
+		<label for="name">Item name:</label>
+		<input type="text" id="name" name="name">
+		<label for="quantity">Quantity</label>
+		<input type="text" id="quantity" name="quantity">
+		<input id="saveShoppingItem" type="submit" value="Add to Shopping List">
+	</form>
+</script>
+
+<script id="shopping-list-item" type="text/template">
+	<li class="shopping-list-item">
+		<span>{{quantity}}</span>
+		<span>{{name}}</span>
+	</li>
+</script>
+
 
 <div class="welcome">
 
@@ -158,6 +176,8 @@
 
 	<ul id="inventory">
 	</ul>
+
+	<div id="shopping"></div>
 
 	<div id="bin">
 <!-- 		<form id="form">

@@ -2,7 +2,7 @@ APP.Router = Backbone.Router.extend({
 
 	routes: {
 		"inventory": "inventory",
-		"shopping-list": "shoppingList",
+		"shopping": "shoppingList",
 		"week": "weeklyScheduleRoute",
 		"search": "search",
 		"search/:recipe_id": "details",
@@ -72,6 +72,7 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	shoppingList: function() {
+		console.log("hi there");
 		$('#bin').empty();
 		var shoppingListView = new APP.ShoppingListView({
 			collection: APP.shoppingList
@@ -79,41 +80,12 @@ APP.Router = Backbone.Router.extend({
 	},
 
 	weeklyScheduleRoute: function() {
-		// APP.weeklySchedule = new APP.WeeklySchedule();
-		// APP.weeklySchedule.fetch({
-		// 	success: function() {
-		// 		var weeklyScheduleView = new APP.WeeklyScheduleView({
-		// 			collection: APP.weeklySchedule
-		// 		});
-		// 		weeklyScheduleView.render();
-		// 	}
-		// });
 	},
 
 	favorite: function() {
-		// APP.favorites = new APP.Favorites();
-		// APP.favorites.fetch({
-		// 	success: function() {
-		// 		APP.favoriteRecipe1 = APP.favorites.get(1);
-		// 		APP.favoriteView = new APP.FavoriteView({
-		// 			model: APP.favoriteRecipe1
-		// 		});
-		// 		APP.favoriteView.render();
-		// 		$("body").append(APP.favoriteView.$el);
-		// 	}
-		// });
 	},
 
 	favorites: function() {
-		// APP.favorites = new APP.Favorites();
-		// APP.favorites.fetch({
-		// 	success: function() {
-		// 		APP.favoritesView = new APP.FavoritesView({
-		// 			collection: APP.favorites
-		// 		});
-		// 		APP.favoritesView.render();
-		// 	}
-		// });
 	},
 
 	home: function() {
