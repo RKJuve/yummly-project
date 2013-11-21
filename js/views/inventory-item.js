@@ -1,6 +1,7 @@
 APP.InventoryItemView = Backbone.View.extend({
 
-	el: "#inventory",
+	el: "#bin",
+	tagName: "li",
 
 	initialize: function() {
 		this.render();

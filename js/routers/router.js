@@ -65,14 +65,12 @@ APP.Router = Backbone.Router.extend({
 
 	inventory: function() {
 		$('#bin').empty();
-		$("inventory").empty();
 		var inventoryListView = new APP.InventoryListView({
 			collection: APP.inventory
 		});
 	},
 
 	shoppingList: function() {
-		console.log("hi there");
 		$('#bin').empty();
 		var shoppingListView = new APP.ShoppingListView({
 			collection: APP.shoppingList
@@ -90,7 +88,6 @@ APP.Router = Backbone.Router.extend({
 
 	home: function() {
 		$('#bin').empty();
-		$("inventory").empty();
 		APP.homeView = new APP.HomeView();
 		$('#form').submit(function(){
 			APP.router.navigate("search", {trigger: true});

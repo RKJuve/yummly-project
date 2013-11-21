@@ -1,6 +1,6 @@
 APP.ShoppingListView = Backbone.View.extend({
 
-	el: "#shopping",
+	el: "#bin",
 
 	initialize: function() {
 		this.render();
@@ -19,7 +19,7 @@ APP.ShoppingListView = Backbone.View.extend({
 		var that = this;
 
 		var shoppingTemplate = Handlebars.compile($("#shopping-list").html());
-		this.$el.before(shoppingTemplate);
+		this.$el.html(shoppingTemplate);
 
 		$("form").on("submit", function(event) {
 			event.preventDefault();
@@ -33,6 +33,5 @@ APP.ShoppingListView = Backbone.View.extend({
 			this.$el.append(APP.shoppingListItemView);
 		}, this);
 		this.$el.wrapInner("<ul />");
-		return this;
 	}
 });

@@ -1,6 +1,6 @@
 APP.InventoryListView = Backbone.View.extend({
 
-	el: "#inventory",
+	el: "#bin",
 
 	initialize: function() {
 		this.render();
@@ -20,7 +20,7 @@ APP.InventoryListView = Backbone.View.extend({
 
 		var inventoryTemplate = $("#inventory-list").html();
 		inventoryTemplate = Handlebars.compile(inventoryTemplate);
-		this.$el.before(inventoryTemplate);
+		this.$el.html(inventoryTemplate);
 
 		$("form").on("submit", function(event) {
 			event.preventDefault();
@@ -33,9 +33,7 @@ APP.InventoryListView = Backbone.View.extend({
 			this.$el.append(APP.inventoryItemView.el);
 
 		}, this);
-
-		return this;
-
+		this.$el.wrapInner("<ul />");
 	}
 
 });
