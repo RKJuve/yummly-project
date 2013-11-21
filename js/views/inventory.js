@@ -8,8 +8,8 @@ APP.InventoryListView = Backbone.View.extend({
 
 	addToInventory: function() {
 		var input = {
-			name: document.forms["inventory-form"]["inventory-item-name"].value,
-			quantity: document.forms["inventory-form"]["quantity"].value
+			rest: document.forms["inventory-form"]["inventory-item-name"].value,
+			scalar: document.forms["inventory-form"]["quantity"].value
 		};
 		APP.inventory.add(input);
 		APP.router.inventory();

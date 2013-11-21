@@ -8,8 +8,8 @@ APP.ShoppingListView = Backbone.View.extend({
 
 	addToShoppingList: function() {
 		var input = {
-			quantity: document.forms["shopping-form"]["quantity"].value,
-			name: document.forms["shopping-form"]["name"].value
+			scalar: document.forms["shopping-form"]["quantity"].value,
+			rest: document.forms["shopping-form"]["name"].value
 		};
 		APP.shoppingList.add(input);
 		APP.router.shoppingList();
@@ -20,7 +20,8 @@ APP.ShoppingListView = Backbone.View.extend({
 		var that = this;
 
 		this.collection.each(function(model) {
-			var shoppingListItemView = new APP.ShoppingListItemView({ model: model});
+			console.log(model);
+			var shoppingListItemView = new APP.ShoppingListItemView({model: model});
 			this.$el.append(shoppingListItemView.el);
 		}, this);
 

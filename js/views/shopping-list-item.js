@@ -1,7 +1,7 @@
 APP.ShoppingListItemView = Backbone.View.extend({
 
 	tagName: "li",
-
+	className: "shopping-list-item",
 	initialize: function() {
 		this.render();
 	},
