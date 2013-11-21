@@ -12,7 +12,7 @@ APP.ShoppingListView = Backbone.View.extend({
 			name: document.forms["shopping-form"]["name"].value
 		};
 		APP.shoppingList.add(input);
-		APP.router.navigate("shopping", {trigger: true});
+		APP.router.shoppingList();
 	},
 
 	render: function() {

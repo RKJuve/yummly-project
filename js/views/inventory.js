@@ -12,7 +12,7 @@ APP.InventoryListView = Backbone.View.extend({
 			quantity: document.forms["inventory-form"]["quantity"].value
 		};
 		APP.inventory.add(input);
-		APP.router.navigate("inventory", {trigger: true});
+		APP.router.inventory();
 	},
 
 	render: function() {
@@ -34,7 +34,6 @@ APP.InventoryListView = Backbone.View.extend({
 			event.preventDefault();
 			that.addToInventory();
 			console.log("done");
-			APP.router.navigate("inventory", {trigger: true});
 		});
 	}
 
