@@ -1,6 +1,6 @@
 APP.ShoppingListView = Backbone.View.extend({
 
-	el: "#shopping",
+	el: "#bin",
 
 	initialize: function() {
 		this.render();
@@ -12,27 +12,27 @@ APP.ShoppingListView = Backbone.View.extend({
 			name: document.forms["shopping-form"]["name"].value
 		};
 		APP.shoppingList.add(input);
+		APP.router.shoppingList();
 	},
 
 	render: function() {
 
 		var that = this;
 
-		var shoppingTemplate = Handlebars.compile($("#shopping-list").html());
-		this.$el.before(shoppingTemplate);
+		this.collection.each(function(model) {
+			var shoppingListItemView = new APP.ShoppingListItemView({ model: model});
+			this.$el.append(shoppingListItemView.el);
+		}, this);
+
+		this.$el.wrapInner("<ul />");
+
+		var shoppingTemplate = $("#shopping-list").html();
+		shoppingTemplate = Handlebars.compile(shoppingTemplate);
+		this.$el.prepend(shoppingTemplate);
 
 		$("form").on("submit", function(event) {
 			event.preventDefault();
 			that.addToShoppingList();
 		});
-
-		this.collection.each(function(model) {
-			APP.shoppingListItemView = new APP.ShoppingListItemView({
-				model: model
-			});
-			this.$el.append(APP.shoppingListItemView);
-		}, this);
-		this.$el.wrapInner("<ul />");
-		return this;
 	}
 });

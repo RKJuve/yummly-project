@@ -46,5 +46,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-peg');
 
   grunt.registerTask("default", ["jshint", "copy", "sass"]);
-  grunt.registerTask("onInstall", ["copy", "sass"]);
+  grunt.registerTask("onInstall", ["copy"]);
 };
