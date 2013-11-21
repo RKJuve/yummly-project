@@ -18,20 +18,20 @@ APP.ShoppingListView = Backbone.View.extend({
 
 		var that = this;
 
-		var shoppingTemplate = Handlebars.compile($("#shopping-list").html());
-		this.$el.html(shoppingTemplate);
+		this.collection.each(function(model) {
+			var shoppingListItemView = new APP.ShoppingListItemView({ model: model});
+			this.$el.append(shoppingListItemView.el);
+		}, this);
+
+		this.$el.wrapInner("<ul />");
+
+		var shoppingTemplate = $("#shopping-list").html();
+		shoppingTemplate = Handlebars.compile(shoppingTemplate);
+		this.$el.prepend(shoppingTemplate);
 
 		$("form").on("submit", function(event) {
 			event.preventDefault();
 			that.addToShoppingList();
 		});
-
-		this.collection.each(function(model) {
-			APP.shoppingListItemView = new APP.ShoppingListItemView({
-				model: model
-			});
-			this.$el.append(APP.shoppingListItemView);
-		}, this);
-		this.$el.wrapInner("<ul />");
 	}
 });

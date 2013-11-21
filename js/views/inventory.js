@@ -18,22 +18,22 @@ APP.InventoryListView = Backbone.View.extend({
 
 		var that = this;
 
+		this.collection.each(function(model) {
+			var inventoryItemView = new APP.InventoryItemView({model: model});
+			this.$el.append(inventoryItemView.el);
+		}, this);
+
+		this.$el.wrapInner("<ul />");
+
 		var inventoryTemplate = $("#inventory-list").html();
 		inventoryTemplate = Handlebars.compile(inventoryTemplate);
-		this.$el.html(inventoryTemplate);
+		this.$el.prepend(inventoryTemplate);
 
 		$("form").on("submit", function(event) {
 			event.preventDefault();
 			that.addToInventory();
 			console.log("done");
 		});
-
-		this.collection.each(function(model) {
-			APP.inventoryItemView = new APP.InventoryItemView({model: model});
-			this.$el.append(APP.inventoryItemView.el);
-
-		}, this);
-		this.$el.wrapInner("<ul />");
 	}
 
 });
