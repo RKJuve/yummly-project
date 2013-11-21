@@ -1,5 +1,5 @@
 APP.RecipieDetails = Backbone.Model.extend({
-	urlRoot: "http://api.yummly.com/v1/api/recipe/",
+	urlRoot: "https://api.yummly.com/v1/api/recipe/",
 	saveToList: function() {
 		console.log('save to list model function');
 		if (!APP.plannedRecipies) {
