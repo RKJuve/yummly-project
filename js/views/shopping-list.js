@@ -36,14 +36,16 @@ APP.ShoppingListView = Backbone.View.extend({
 			that.addToShoppingList();
 		});
 
-						$(".checkBox").on("click", function() {
-			// $(this).toggleClass("boxChecked");
-			// $(this).next("span").toggleClass("grayedOut").next("span").toggleClass("grayedOut");
-			// $(this).parent().toggleClass("toDelete");
-			// that.model.set({done: true});
-			APP.shoppingList.remove(that.model.cid);
-			console.log("delete?");
+		$(".checkBox, .shoppingItemName, .howManyOfItem").on("click", function() {
+			$(this).toggleClass("boxChecked");
+			$(this).next("span").toggleClass("grayedOut").next("span").toggleClass("grayedOut");
+			$(this).parent().toggleClass("toDelete");
 		});
-		console.log(APP.shoppingList.get(this.model));//get(that.model.cid));
+
+		$("#deleteShoppingItems").on("click", function() {
+			//$(".toDelete").remove();
+			APP.shoppingList.remove(that.model.cid);
+			console.log("deleted?");
+		});
 	}
 });

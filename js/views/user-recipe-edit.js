@@ -26,7 +26,7 @@ APP.UserRecipeEditView = Backbone.View.extend({
 		$('#addLine').on("click", function(){
 			$('#addLine').before('<input type="text" id="ingredient_'+ that.ingredientCount +'" placeholder="..."/>');
 			that.ingredientCount++;
-		});
+		});		
 		$('#save').on("click",function(){
 			that.updateRecipe();
 		});
@@ -34,7 +34,7 @@ APP.UserRecipeEditView = Backbone.View.extend({
 			var r = confirm("You sure about that?")
 			if (r == true) {
 				APP.userRecipes.remove(that.model.cid);
-				APP.router.navigate("userRecipes", {trigger:true})
+				APP.router.navigate("userRecipes", {trigger:true})		
 			} else {
 				return;
 			}

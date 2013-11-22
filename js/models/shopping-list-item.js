@@ -4,12 +4,7 @@ APP.ShoppingListItem = Backbone.Model.extend({
 		recipeIngredient: false,
 		organic: false,
 		desiredStore: "",
-		inSeason: false,
-		done: false
-	},
-
-	toggle: function() {
-		this.save({done: !this.get("done")});
+		inSeason: false
 	}
 });
 
