@@ -13,17 +13,17 @@ APP.ShoppingListItemView = Backbone.View.extend({
 	},
 
 	render: function() {
+		var that = this;
 		var template = Handlebars.compile($("#shopping-list-item").html());
 		this.$el.html(template(this.model.toJSON()));
 		console.log("rendered");
+
+		$("#deleteShoppingItems").on("click", function() {
+			//$(".toDelete").remove();
+			APP.shoppingList.remove(that.model.cid);
+			console.log("deleted?");
+		});
+
 	}
-
-	// toggle: function(event) {
-	// 	this.model.completed = "completed";
-	// },
-
-	// delete: function(event) {
-
-	// }
 
 });
